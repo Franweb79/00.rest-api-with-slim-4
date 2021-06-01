@@ -23,20 +23,39 @@
 
             $dbConnObj=new Connection(); 
 
-            $PDOconn=$dbConnObj->connect();/*because to use the query method must be a PDO object, and we do that
-            on the connect method*/
+            /*because to use the query method must be a PDO object, and we do that
+            on the connect() method*/
+
+            $PDOconn=$dbConnObj->connect();
             //query
 
             $stmt = $PDOconn->query( $sql );
             $users = $stmt->fetchAll( PDO::FETCH_OBJ );
             $dbConnObj = null; // clear db object (close the connection)
 
-            // print out the result as json format
-            $responseJSONencoded=json_encode( $users );
+            /*
+            
+            we convert result into JSON because that way it is a string, and then we can use it
+            as argument on the write() method, since it needs a string
+            
+            also to be able to return data as json with the method $response->withHeader()
+            
+            */
+            $responseJSON_encoded=json_encode( $users );
 
-            $response->getBody()->write($responseJSONencoded);
+           
 
-            return $response;
+            /* 
+            
+            return $response must return a response object; if we wanrt to return as a json object to make it
+            more easy to use by clients, then pass the json created with json_encode to the body of the response
+            through getBody()->write(), and then set proper header with the "response->withHeader() method, as said before
+            
+            */
+
+            $response->getBody()->write($responseJSON_encoded);
+
+            return $response->withHeader('Content-Type', 'application/json');
 
 
 
@@ -44,9 +63,9 @@
         }catch(PDOException $ex){
 
             $responseJSONencoded='{"error": "message":'. $ex->getMessage() . '}';
-            $response->getBody()->write($responseJSONencoded);
+            $response->getBody()->write( $responseJSONencoded);
 
-            return $response;
+            return $response->withHeader('Content-Type', 'application/json');
         }
     });
 
