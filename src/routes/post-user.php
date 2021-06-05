@@ -10,8 +10,23 @@
     $app->post('/post-user', function ($request, $response, array $args) {
         // Create new USER
 
+        //test if email is well formed https://www.w3schools.com/php/php_form_url_email.asp
+
+        function test_input($data) {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+        }
+
+        $nameCheck=test_input($_POST["name"]);
+        $emailCheck= test_input($_POST["email"]);
+
+        
+        
         $statusValue=$_POST["status"];/*to operate with it without losing it, remember $_POST only has its value one time */
-        if($statusValue=="Activo"||$statusValue=="Inactivo"||$statusValue=="activo"||$statusValue=="inactivo" ){
+        /*if mail is ok, and status has allowed values*/
+        if( ($statusValue=="Activo"||$statusValue=="Inactivo"||$statusValue=="activo"||$statusValue=="inactivo" ) && (filter_var($emailCheck, FILTER_VALIDATE_EMAIL)) && preg_match("/^[a-zA-Z-' ]*$/",$nameCheck)) {
 
 
             //  var_dump($_POST["name"]);
@@ -80,7 +95,7 @@
 
         }else
         {
-            $responseJSONencoded='{ "message": " Status must be active or inactive"}';
+            $responseJSONencoded='{ "message": " Status must be active or inactive, also check if email is well formed, and if name has only letters and white spaces"}';
 
             
             $response->getBody()->write( $responseJSONencoded);
