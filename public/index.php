@@ -39,6 +39,9 @@
     $app->setBasePath("/00.rest-api-with-slim-4/public");
     $app->addErrorMiddleware(true, true, true);
 
+
+  
+
     // Define app routes
     $app->get('/', function (Request $request, Response $response) {
         $response->getBody()->write("Hello, world!");
@@ -65,6 +68,7 @@
     });
 
 
+   
     
 
     // Run app
