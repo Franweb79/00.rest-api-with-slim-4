@@ -16,10 +16,20 @@
 
         $datestr=$date->format('Y-m-d H:i:s');
 
-        $sql="INSERT INTO usuarios (name,short_name,email,status,creation_date,last_access_date,last_access_ip)
-        VALUES ('luis', 'luisin', 'pp@gg.com', 'Activo','$datestr','$datestr',rand(0-255));";
+        $ipdata1=rand(0,255);
 
-     var_dump($sql);
+        $ipdata2=rand(0,255);
+
+        $ipdata3=rand(0,255);
+
+        $ipdata4=rand(0,255);
+
+        $allIpData=$ipdata1.".". $ipdata2.".". $ipdata3.".".$ipdata4;
+
+        $sql="INSERT INTO usuarios (name,short_name,email,status,creation_date,last_access_date,last_access_ip)
+        VALUES ('luis', 'luisin', 'pp@gg.com', 'Activo','$datestr','$datestr', '$allIpData');";
+
+    
         $responseJSONencoded="";
 
         try{
