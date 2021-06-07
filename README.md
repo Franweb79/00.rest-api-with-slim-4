@@ -9,18 +9,10 @@
 #    params names to be used:
 
 #           <ul>
-#              <li>
-#                   name (only letters or whitespaces allowed)
-#               </li>
-#               <li>
-#                    short_name
-#               </li>
-#               <li>
-#                    email
-#               </li>
-#               <li>
-#                    status
-#               </li>
+#              <li>name (only letters or whitespaces allowed)</li>
+#              <li>short_name</li>
+#              <li>email</li>
+#              <li>status</li>
 #           </ul>
 
 # all rights reserved
