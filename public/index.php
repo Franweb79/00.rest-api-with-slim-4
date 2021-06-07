@@ -21,8 +21,8 @@
     $app = AppFactory::create();
 
     // # include users route, must do AFTER the declaration of app instance, dont know why
-    require '../src/routes/get-all-users.php';
-    require '../src/routes/post-user.php';
+    require '../src/routes/users/get-all-users.php';
+    require '../src/routes/users/post-user.php';
 
 
 

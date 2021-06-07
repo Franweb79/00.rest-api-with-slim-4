@@ -10,14 +10,14 @@
 
 #           <ul>
 #              <li>
-#                   name (only letters or whitespaces allowed")
-#               <li>
+#                   name (only letters or whitespaces allowed)
+#               </li>
 #               <li>
 #                    short_name
-#               <li>
+#               </li>
 #               <li>
 #                    email
-#               <li>
+#               </li>
 #               <li>
 #                    status
 #               </li>
