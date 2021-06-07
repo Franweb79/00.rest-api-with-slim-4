@@ -22,6 +22,7 @@
 
     // # include users route, must do AFTER the declaration of app instance, dont know why
     require '../src/routes/users/get-all-users.php';
+    require '../src/routes/users/get-single-user.php';
     require '../src/routes/users/post-user.php';
 
 
@@ -55,17 +56,7 @@
         
     });*/
 
-    //test dymanic names ans so, still not with database
-    $app->get('/users/{name}', function ($request, $response, array $args) {
-
-        //capture the name
-        
-        $userName = $request->getAttribute('name');
-
-        $response->getBody()->write("hi there ".$userName);
-        return $response;
-        
-    });
+ 
 
 
    

@@ -55,7 +55,7 @@
 
             $response->getBody()->write($responseJSON_encoded);
 
-            return $response->withHeader('Content-Type', 'application/json');
+            
 
 
 
@@ -65,8 +65,10 @@
             $responseJSONencoded='{"error": "message":'. $ex->getMessage() . '}';
             $response->getBody()->write( $responseJSONencoded);
 
-            return $response->withHeader('Content-Type', 'application/json');
+           
         }
+
+        return $response->withHeader('Content-Type', 'application/json');
     });
 
     
