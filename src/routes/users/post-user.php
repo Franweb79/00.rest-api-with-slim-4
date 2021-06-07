@@ -31,6 +31,7 @@
 
             //  var_dump($_POST["name"]);
 
+            /*gives somes problems is we store the $_POST values directly on the wuery, naybe because of sdyntax, so better so*/
             $nameValue=$_POST["name"];
             $shortNameValue=$_POST["short_name"];
             $emailValue=$_POST["email"];
@@ -55,7 +56,7 @@
             $allIpData=$ipdata1.".". $ipdata2.".". $ipdata3.".".$ipdata4;
 
             $sql="INSERT INTO usuarios (name,short_name,email,status,creation_date,last_access_date,last_access_ip)
-            VALUES ('$nameValue', '$shortNameValue', '$emailValue', '$statusValue','$datestr','$datestr', '$allIpData');";
+            VALUES (:name,:short_name,:email,:status,:creation_date,:last_access_date,:last_access_ip);";
 
         
             $responseJSONencoded="";
@@ -66,9 +67,21 @@
 
                 $PDOconn=$dbConnObj->connect();
 
+                $sth = $PDOconn->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+
+                
+
+                $sth->execute( array(':name' => $nameValue, 
+                                    ':short_name' => $shortNameValue,
+                                    ':email'=>  $emailValue, 
+                                    ':status' => $statusValue, 
+                                    ':creation_date' => $datestr, 
+                                    ':last_access_date' => $datestr, 
+                                    ':last_access_ip'=> $allIpData) );
+
                 //query
 
-                $stmt = $PDOconn->query( $sql );
+               // $stmt = $PDOconn->query( $sql );
 
             
 

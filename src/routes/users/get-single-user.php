@@ -34,7 +34,8 @@
 
             $sth =   $PDOconn->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
 
-           $sth->execute( array(':name' => $userName) );
+           /*execute is for prepared sentence*/
+            $sth->execute( array(':name' => $userName) );
 
            /*fetchAll() dives us an array, we set as an associate array, and store it on a variable*/
 
