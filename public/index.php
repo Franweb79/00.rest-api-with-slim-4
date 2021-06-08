@@ -20,9 +20,10 @@
 
     $app = AppFactory::create();
 
-    // # include users route, must do AFTER the declaration of app instance, dont know why
+    // # include users route, must do AFTER the declaration of app instance, dont know why. I GUESS BECAUSE THE $app invoked 
+    //on those routes still not exists until $app is created
     require '../src/routes/users/get-all-users.php';
-    require '../src/routes/users/get-single-user.php';
+    require '../src/routes/users/get-user.php';
     require '../src/routes/users/post-user.php';
 
 

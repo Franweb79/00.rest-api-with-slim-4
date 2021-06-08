@@ -7,20 +7,23 @@
     /*GET USER BY nAME*/
 
        //test dymanic names and so, still not with database
-       $app->get('/users/{name}', function ($request, $response, array $args) {
-
+       //param can ne bame, short_name.email or status
+       $app->get('/get-user/{param}', function ($request, $response, array $args) {
+       
         
+        $userParam = $request->getAttribute('param');
 
+       
         $responseJSONencoded="";
 
         try{
 
-           //capture the name
+           
         
-            $userName = $request->getAttribute('name');
+           
             
             
-            $sql="SELECT * FROM usuarios where name = :name";
+            $sql="SELECT * FROM usuarios where (name = :param) OR (short_name = :param) OR (email = :param) OR (status = :param)";
 
             /*invoke custom class Connection*/
 
@@ -34,8 +37,12 @@
 
             $sth =   $PDOconn->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
 
+           
+
            /*execute is for prepared sentence*/
-            $sth->execute( array(':name' => $userName) );
+            $sth->execute( array(':param' => $userParam ) );
+
+           
 
            /*fetchAll() dives us an array, we set as an associate array, and store it on a variable*/
 
@@ -48,7 +55,7 @@
 
             }else{
 
-                $responseJSONencoded='{"message" : "no users with this name on our database"}';
+                $responseJSONencoded='{"message" : "no users with this name, shortname, email or status on our database"}';
             }
 
             
