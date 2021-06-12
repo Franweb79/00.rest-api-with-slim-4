@@ -26,6 +26,14 @@
     require '../src/routes/users/get-user.php';
     require '../src/routes/users/post-user.php';
 
+    //ITEMS ROUTES
+
+    require '../src/routes/items/get-all-items.php';
+
+    //log in route
+
+    require '../src/routes/login.php';
+
 
 
     // Add Slim routing middleware
