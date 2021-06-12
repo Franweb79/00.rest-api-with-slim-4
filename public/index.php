@@ -35,6 +35,7 @@
     //log in route
 
     require '../src/routes/login.php';
+    require '../controllers/login-control.php';
 
 
 
@@ -51,15 +52,30 @@
     $app->setBasePath("/00.rest-api-with-slim-4/public");
     $app->addErrorMiddleware(true, true, true);
 
-
+    
   
 
     // Define app routes
-    $app->get('/', function (Request $request, Response $response) {
+    $app->get('/', function (Request $request, Response $response, $args) {
        // $response->getBody()->write("Hello, world!");
-       return $response->withHeader('Location', './login');
-        return $response;
+
+       $renderer = new PhpRenderer('../templates');
+
+       return $renderer->render($response, "small-login.php", $args);
+        /*$response->getBody()->write($html);
+        
+        return $response;*/
+       //return $response->withHeader('Location', './login');
+       
     });
+
+    
+
+    
+
+
+
+
 
    /* $app->get('/users', function ($request, $response, array $args) {
 
