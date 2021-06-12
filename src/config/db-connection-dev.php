@@ -9,7 +9,7 @@
          private $host="localhost";
          private $user="root";
          private $pass="";
-         private $databasename="users-for-api-rest";
+         private $databasename="database-for-slim-4-rest-api";
 
 
         public function connect(){
