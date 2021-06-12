@@ -9,6 +9,8 @@
     use Slim\Factory\AppFactory;
     use Selective\BasePath\BasePathDetector;
 
+    use Slim\Views\PhpRenderer;
+
     //include the SLIM framework
 
     require_once __DIR__ . '/../vendor/autoload.php';
@@ -54,7 +56,8 @@
 
     // Define app routes
     $app->get('/', function (Request $request, Response $response) {
-        $response->getBody()->write("Hello, world!");
+       // $response->getBody()->write("Hello, world!");
+       return $response->withHeader('Location', './login');
         return $response;
     });
 
