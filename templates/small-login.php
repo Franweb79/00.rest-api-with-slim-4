@@ -30,7 +30,7 @@
 
                 <div class="col-sm">
 
-                <form method="POST" action ="./login-control"> <!-- TODO validate this form as said here https://tryphp.w3schools.com/showphp.php?filename=demo_form_validation_required -->
+                <form method="POST"> <!-- TODO validate this form as said here https://tryphp.w3schools.com/showphp.php?filename=demo_form_validation_required -->
             
                     <div class="mb-3">
                         <p><h2>LOGIN </h2></p>
@@ -54,7 +54,7 @@
                         <input type="checkbox" class="form-check-input" id="rememberMeInputLogInId"> <!-- TODO install cookie when clicked -->
                     </div> 
 
-
+                    <input type="hidden" id="login-form-incoming-id" name="login-form-incoming-name" value="YES"> 
                     <button type="submit" class="btn btn-primary">Submit</button>
 
                 </form>

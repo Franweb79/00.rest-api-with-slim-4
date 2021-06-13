@@ -50,7 +50,7 @@
 
 
 
-
+    
     
    
 
@@ -89,8 +89,43 @@
     });
 
     $app->post('/', function (Request $request, Response $response, $args) {
+
+        /*if a login form is set, we render the template again to show errors of they are.*/
+
+      
+
         
-        $response->getBody()->write("posted");
+        
+        if( isset($_POST['login-form-incoming-name']) ){
+
+            
+
+           // $response->getBody()->write($_POST['login-form-incoming-name']);
+
+           // require "../controllers/login-form-validations.php";
+
+
+        
+
+            $renderer = new PhpRenderer('../templates');
+
+            $renderer->render($response, "small-login.php", $args);
+
+            //echo ($isAllOk);
+
+           
+
+
+
+           
+                
+            
+           
+        
+
+        }
+        
+        
          /*$response->getBody()->write($html);*/
          
          return $response;
