@@ -5,10 +5,12 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 $app->post('/login-control', function (Request $request, Response $response, $args){
-    $data = $request->getParsedBody();
+    $data = $request->getParsedBody();/* TODO   quiza haya que hacer aqui las validaciones, o que solo llegue si esta bien?*/
+
+    var_dump($data);
 
     $jencoded=json_encode($data);
-    var_dump($data['name']);
+    //var_dump($data['loginEMailInputID']);
 
    // $responseJSONencoded=json_encode($data);
     
