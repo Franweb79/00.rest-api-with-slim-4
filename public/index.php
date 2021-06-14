@@ -79,8 +79,6 @@
        // $response->getBody()->write("Hello, world!");
 
      
-          
-       
 
        $renderer = new PhpRenderer('../templates');
 
