@@ -90,7 +90,7 @@
 
     $app->post('/', function (Request $request, Response $response, $args) {
 
-        /*if a login form is set, we render the template again to show errors of they are.*/
+        /*if a login form is set, we render the template again to show errors if they are.*/
 
       
 

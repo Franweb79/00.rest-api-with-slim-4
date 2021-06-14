@@ -47,11 +47,15 @@
        // var_dump ($isAllOK);
 
        if($isAllOK){
-
+           
+        
+        
+            header("Location: ./login-control"); /* TODO a ver esto como redirecciono bien*/
+            //exit();
             
 
-            echo "tira pa ya jopder";
-            header("Location: http://www.google.es"); /* TODO a ver esto como redirecciono bien*/
+            //echo "tira pa ya jopder";
+            
         }
 
         
