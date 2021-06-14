@@ -7,8 +7,7 @@
     $email="";
     $emailErr="";
 
-    error_reporting(E_ALL);
-    ini_set('display_errors', 'On');
+    
     
 
     function test_input($data) {
@@ -46,17 +45,14 @@
          
        // var_dump ($isAllOK);
 
-       if($isAllOK){
-           
-        
-        
-            header("Location: ./login-control"); /* TODO a ver esto como redirecciono bien*/
-            //exit();
-            
+      if(!$isAllOK){
 
-            //echo "tira pa ya jopder";
-            
-        }
+        
+        header("Location: ./");
+        exit();
+        
+      }
+
 
         
     }

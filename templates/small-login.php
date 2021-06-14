@@ -30,7 +30,7 @@
 
                 <div class="col-sm">
 
-                <form method="POST"> <!-- TODO validate this form as said here https://tryphp.w3schools.com/showphp.php?filename=demo_form_validation_required -->
+                <form method="POST" action="./login-control"> <!-- TODO validate this form as said here https://tryphp.w3schools.com/showphp.php?filename=demo_form_validation_required -->
             
                     <div class="mb-3">
                         <p><h2>LOGIN </h2></p>

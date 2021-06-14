@@ -80,7 +80,8 @@
 
        $renderer = new PhpRenderer('../templates');
 
-       return $renderer->render($response, "small-login.php", $args);
+       return $renderer->render($response, "small-login.php", $args); /*TODO how could I do to show "wrong format message" or so
+       when login-control has returned us to the login? */ 
         /*$response->getBody()->write($html);
         
         return $response;*/
@@ -93,37 +94,36 @@
         /*if a login form is set, we render the template again to show errors if they are.*/
 
       
-
         
         
-        if( isset($_POST['login-form-incoming-name']) ){
+       /* if( isset($_POST['login-form-incoming-name']) ){
 
             
 
-           // $response->getBody()->write($_POST['login-form-incoming-name']);
-
-           // require "../controllers/login-form-validations.php";
-
-
-        
-
-            $renderer = new PhpRenderer('../templates');
-
-            $renderer->render($response, "small-login.php", $args);
-
-            //echo ($isAllOk);
-
-           
-
-
-
-           
-                
+            // $response->getBody()->write($_POST['login-form-incoming-name']);
+    
+            // require "../controllers/login-form-validations.php";
+    
+    
+         
+    
+             $renderer = new PhpRenderer('../templates');
+    
+             $renderer->render($response, "small-login.php", $args);
+    
+             //echo ($isAllOk);
+    
             
-           
-        
-
-        }
+    
+    
+    
+            
+                 
+             
+            
+         
+    
+         }/
         
         
          /*$response->getBody()->write($html);*/
