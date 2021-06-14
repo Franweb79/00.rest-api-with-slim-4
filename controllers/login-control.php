@@ -18,12 +18,12 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
 
         // require "../controllers/login-form-validations.php";
 
-
+        require "../controllers/login-form-validations.php";
      
 
-         $renderer = new PhpRenderer('../templates');
+         /*$renderer = new PhpRenderer('../templates');
 
-         $renderer->render($response, "small-login.php", $args);
+         $renderer->render($response, "small-login.php", $args);*/
 
          //echo ($isAllOk);
 

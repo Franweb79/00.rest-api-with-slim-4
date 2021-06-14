@@ -78,10 +78,14 @@
     $app->get('/', function (Request $request, Response $response, $args) {
        // $response->getBody()->write("Hello, world!");
 
+     
+          
+       
+
        $renderer = new PhpRenderer('../templates');
 
        return $renderer->render($response, "small-login.php", $args); /*TODO how could I do to show "wrong format message" or so
-       when login-control has returned us to the login? */ 
+       when login-control has returned us to the login? maybe with an s session var?*/ 
         /*$response->getBody()->write($html);
         
         return $response;*/
