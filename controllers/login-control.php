@@ -33,7 +33,7 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
      }
     
 
-    $data = $request->getParsedBody();/* TODO   quiza haya que hacer aqui las validaciones, o que solo llegue si esta bien?*/
+    $data = $request->getParsedBody();
 
     //var_dump($data);
 

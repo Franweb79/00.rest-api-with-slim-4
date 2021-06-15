@@ -2,6 +2,8 @@
 
 /*https://tryphp.w3schools.com/showphp.php?filename=demo_form_validation_required*/
 
+// TODO this one will be included also on the register form, where is more important than in login form*/
+
 //echo "hola";
 
     $email="";
@@ -29,6 +31,8 @@
              $emailErr = "Email is required";
 
              $isAllOK=false;
+
+              
     
 
         } else {
@@ -38,7 +42,8 @@
                 $emailErr = "Invalid email format";
 
                 $isAllOK=false;
-    
+
+               
                
             }
         }
@@ -48,8 +53,20 @@
       if(!$isAllOK){
 
        
-        header("Location: ./");
+
+       //ECHO "WRONG";
+      
+       session_start();
+        $_SESSION['alert']="alert-danger";
+        header( 'Location: ./');
         exit();
+        
+    ?>
+
+     <!--   <script type="text/javascript">
+            window.location.href = './';
+        </script>-->
+    <?php
         
       }
 

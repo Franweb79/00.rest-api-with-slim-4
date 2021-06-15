@@ -4,11 +4,11 @@
         </head>
         <body>
 
-            <form method="POST" action="./login-control">
+            <!--<form method="POST" action="./register-control">
                 <label>Name: <input name="name"></label>
                 <label>Country: <input name="country"></label>
                 <input type="submit">
-            </form>
+            </form>-->
 
             <div class="container">
                 <div class="row">
@@ -18,7 +18,19 @@
 
                     <div class="col-sm">
 
-                        <form>
+                        <form> <?php /* TODO habra que hacer que si fallan las validaciones, me devuelva al register, y quiza haya que 
+                        hacer otro php de validaciones del login si no conseguimos hacer una condicion para el header location segun de que ruta o algo 
+                        asi haya venido la request 
+                        
+                        TODO validate this form as said here https://tryphp.w3schools.com/showphp.php?filename=demo_form_validation_required
+                        
+                            AND HERE 
+
+                            https://stackoverflow.com/questions/22544250/php-password-validation
+
+                        */
+                        
+                        ?>
                     
                             <div class="mb-3">
                                 <p><h2>REGISTER </h2></p>

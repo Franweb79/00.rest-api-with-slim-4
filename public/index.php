@@ -43,10 +43,13 @@
 
     require '../src/routes/items/get-all-items.php';
 
-    //log in route
+    //log in and register route
 
     require '../src/routes/login.php';
     require '../controllers/login-control.php';
+
+    require '../src/routes/register.php';
+
 
 
 
@@ -78,12 +81,34 @@
     $app->get('/', function (Request $request, Response $response, $args) {
        // $response->getBody()->write("Hello, world!");
 
-     
+        /*we use session_start() to recover prior sessions if they are
+
+        */
+            session_start();
+            
+       
+       if( isset($_SESSION['alert'])   ){
+
+        
+       
+
+            if($_SESSION['alert']=="alert-danger"){
+        
+        ?>
+                <div class="alert <?php echo $_SESSION['alert'] ?> " role="alert">
+                    WRONG LOGIN, INVALID FORMED OR INCORRECT EMAIL/PASSWORD
+                </div>
+            
+        <?php
+
+                session_destroy();
+            }
+
+        }
 
        $renderer = new PhpRenderer('../templates');
 
-       return $renderer->render($response, "small-login.php", $args); /*TODO how could I do to show "wrong format message" or so
-       when login-control has returned us to the login? maybe with an s session var?*/ 
+       return $renderer->render($response, "small-login.php", $args); 
         /*$response->getBody()->write($html);
         
         return $response;*/
