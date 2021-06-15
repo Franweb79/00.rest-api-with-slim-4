@@ -34,14 +34,19 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
 
      /*once everything is correct regarding validations, we will have to check againt data base if email or pass exists on 
      the user dabatase*/
+
+     $data = $request->getParsedBody();
+
+     
+
     
      $userObject=new User();
 
-     $userObject->userLogin();/*this must be done with the $data*/  
+     $userObject->userLogin($data["loginEmailName"], $data["loginPassName"]);/*this must be done with the $data*/  
 
+    
      die();
-     
-     $data = $request->getParsedBody();
+   
 
     //var_dump($data);
 
