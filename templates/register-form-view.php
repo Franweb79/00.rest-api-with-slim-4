@@ -28,6 +28,9 @@
 
                             https://stackoverflow.com/questions/22544250/php-password-validation
 
+                            //TODO MAYBE we use a library https://github.com/vlucas/valitron
+                            //TODO remember passowrd must be HASHED!
+
                         */
                         
                         ?>

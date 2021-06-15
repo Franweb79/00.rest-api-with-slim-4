@@ -9,7 +9,7 @@ use Slim\Views\PhpRenderer;
 $app->post('/login-control', function (Request $request, Response $response, $args){
 
     
-    
+    /*if a form is coming, we require the code to make the validations*/
     if( isset($_POST['login-form-incoming-name']) ){
 
             
@@ -31,9 +31,17 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
      
 
      }
-    
 
-    $data = $request->getParsedBody();
+     /*once everything is correct regarding validations, we will have to check againt data base if email or pass exists on 
+     the user dabatase*/
+    
+     $userObject=new User();
+
+     $userObject->userLogin();/*this must be done with the $data*/  
+
+     die();
+     
+     $data = $request->getParsedBody();
 
     //var_dump($data);
 

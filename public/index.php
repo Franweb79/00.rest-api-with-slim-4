@@ -48,6 +48,8 @@
     require '../src/routes/login.php';
     require '../controllers/login-control.php';
 
+    require '../src/config/User-model.php';
+
     require '../src/routes/register.php';
 
 
