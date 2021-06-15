@@ -18,7 +18,7 @@
 
                     <div class="col-sm">
 
-                        <form> <?php /* TODO habra que hacer que si fallan las validaciones, me devuelva al register, y quiza haya que 
+                        <form> <?php /* TODO habraa que hacer que si fallan las validaciones, me devuelva al register, y quiza haya que 
                         hacer otro php de validaciones del login si no conseguimos hacer una condicion para el header location segun de que ruta o algo 
                         asi haya venido la request 
                         
