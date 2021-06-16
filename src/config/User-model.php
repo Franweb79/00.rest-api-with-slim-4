@@ -19,6 +19,7 @@
 
 
               $sql = "SELECT * from users where  (user_email = :usermail) AND (user_password = :userpass)"; 
+              
             try{
 
                 $conObj=new Connection();
@@ -41,18 +42,20 @@
 
                // var_dump($user_email ."". $user_password);
 
-                var_dump($users);
+                //var_dump($users);
 
              
 
                 /*if the resulting array is not empty, we converty to json; if not, a guven message on json string literal format*/
                 if(count($users)>0 ){
 
-                    $responseJSONencoded= json_encode($users);
+                    $response= $users;
 
                 }else{
 
-                    $responseJSONencoded='{"message" : "no users with this mail, or pass on our database"}';
+                   // $response ='{"message" : "no users with this mail, or pass on our database"}';
+
+                    $response=null;
                 }
 
                
@@ -68,10 +71,10 @@
                 */
                 
 
-                var_dump($responseJSONencoded);
+                //var_dump($response);
            
                 //var_dump("ey".$responseJSON_encoded);
-                return $responseJSONencoded; /*mnaybe with this we store on a slim response later when execiuted, on login-control.php*/
+                return $response; /*mnaybe with this we store on a slim response later when execiuted, on login-control.php*/
 
             
 

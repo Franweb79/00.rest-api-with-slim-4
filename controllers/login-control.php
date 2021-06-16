@@ -42,29 +42,68 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
     
      $userObject=new User();
 
-     $userObject->userLogin($data["loginEmailName"], $data["loginPassName"]);/*this must be done with the $data*/  
+     /*this will return a jsonencoded response, which we will write on the body of the reponse of this route*/
+      $responseFromLogIn=$userObject->userLogin($data["loginEmailName"], $data["loginPassName"]);/*this must be done with the $data*/
 
+      //var_dump($responseFromLogIn);
+      
+      if($responseFromLogIn != null){
+      /*we need a string to be passed to getbody()->write, so we convert the incoming array on <json></json>*/
+
+        session_start();
+
+        //var_dump($responseFromLogIn);
+
+      // var_dump($responseFromLogIn[0]["user_name"]);
+       
+  
+
+        $_SESSION['user_name']=$responseFromLogIn[0]["user_name"];
+        $_SESSION['user_email']=$responseFromLogIn[0]["user_email"];
+        $_SESSION['valid_user']="yes";
+        $_SESSION['alert']="alert-info";
+
+
+        /* TODO look how to pass an netire object to a session*/
+
+        $jencoded=json_encode($responseFromLogIn);
+
+       // var_dump ($jencoded);
+
+        $response->getBody()->write($jencoded);
+
+       // var_dump($response->getBody());
+
+       
+        return $response->withHeader("Location", "./");
+
+        
+
+      }
     
-     die();
-   
+    
+    
+      /* TODO MUST BE A RETURN REPSONSE HERE IF NO CORRECT USER*/
+    
+
+      return $response;
 
     //var_dump($data);
 
-    $jencoded=json_encode($data);
     //var_dump($data['loginEMailInputID']);
 
    // $responseJSONencoded=json_encode($data);
     
-    $html = var_export($data, true);
+    //$html = var_export($data, true);
    // $response->getBody()->write($responseJSONencoded);
 
-    $response->getBody()->write($html);
+   // $response->getBody()->write($html);
    
-    /*TODO por aqui habra que meter los datos a la base de datos y luego redirigir al index que muestre los endpoints*/
+  
    
     //return $response->withHeader('Content-Type', 'application/json');
 
-    return $response; 
+   // return $response; 
 });
 
 ?>

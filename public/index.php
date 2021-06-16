@@ -86,31 +86,84 @@
         /*we use session_start() to recover prior sessions if they are
 
         */
-            session_start();
-            
        
-       if( isset($_SESSION['alert'])   ){
+        session_start();
+      
 
-        
-       
+        var_dump ($_SESSION);
 
-            if($_SESSION['alert']=="alert-danger"){
-        
-        ?>
-                <div class="alert <?php echo $_SESSION['alert'] ?> " role="alert">
-                    WRONG LOGIN, INVALID FORMED OR INCORRECT EMAIL/PASSWORD
-                </div>
+         if( empty($_SESSION)){
+
             
-        <?php
+        
+            session_destroy();
 
-                session_destroy();
-            }
+            $renderer = new PhpRenderer('../templates');
+
+            return $renderer->render($response, "small-login.php", $args); 
 
         }
 
-       $renderer = new PhpRenderer('../templates');
+        if (isset($_SESSION['alert'])){
 
-       return $renderer->render($response, "small-login.php", $args); 
+            if($_SESSION['alert']=="alert-danger"){
+
+                        session_destroy();
+        
+                ?>
+                        <div class="alert <?php echo $_SESSION['alert'] ?> " role="alert">
+                            WRONG LOGIN, INVALID FORMED OR INCORRECT EMAIL/PASSWORD
+                        </div>
+                    
+                <?php
+        
+                       
+
+                        $renderer = new PhpRenderer('../templates');
+
+                        return $renderer->render($response, "small-login.php", $args); 
+            }
+
+           
+
+        }
+            
+       // TODO si la sesion esta vacia (primera vez), o el form esta mal, se muestra el template. primer caso sin aviso, segunda con él
+      
+
+        
+       
+
+           
+
+
+
+        if( isset($_SESSION["valid_user"]) && $_SESSION['valid_user']=="yes" ){
+        
+            //TODO METER OTRA TEMPLATE CON LOS ENDPOINT YA AQUI
+        
+             if( ( isset($_SESSION['alert']) ) && ( $_SESSION['alert']=="alert-info" ) ){
+
+        ?>
+
+                <div class="alert <?php echo $_SESSION['alert'] ?> " role="alert">
+                   welcome <?php echo $_SESSION['user_name'] ?>
+                </div>
+        <?php   
+        
+        /* MUST DESTROY THE SESSION VARIABLE FOR THE session alert info, TO AVOID FLAG BEING SHOW*/
+                unset($_SESSION['alert']);
+
+               // session_destroy(); /*TODO delete this, only for thests, must make a close session button when correctly logged on the endpoint template*/
+
+             }
+
+        }
+
+       
+        
+        return $response;
+      
         /*$response->getBody()->write($html);
         
         return $response;*/
