@@ -11,5 +11,36 @@
         <body>
 
             <?php echo "soy el table" ?>
+
+            <div class="list-group">
+            
+                <div>
+                    
+                    <span class="badge badge-primary badge-pill">1</span>
+                </div>
+            </div>
+
+            <div class="container">
+  <div class="row">
+    <div class="col-sm">
+    <?php 
+    
+    $url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    echo  $url; ?>
+
+        <a href="<?php echo $url.'get-all-items' ?>" target="_blank"class="list-group-item list-group-item-action list-group-item-light"> GET ITEMS</a>
+        <a href="<?php echo $url ?>" class="list-group-item list-group-item-action list-group-item-light">GET AN ITEM</a>
+        <a href="<?php echo $url ?>" class="list-group-item list-group-item-action list-group-item-light">POST ITEM </a>      
+    </div>
+    <div class="col-sm">
+  
+    </div>
+    <div class="col-sm">
+     
+    </div>
+  </div>
+</div>
+
+         
         </body>
     </html>
