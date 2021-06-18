@@ -113,6 +113,8 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
         /*if is null, to the /, cause session or user is not valid*/
 
         /* TODO MUST BE A RETURN REPSONSE HERE IF NO CORRECT USER*/
+
+        
         /*SEND A FLAG OR A SESSION VAR OR SOMETHING TO TELL USER OR PASS IS WRONG, not invalid formed but wrong*/
 
         return $response->withHeader("Location", "./");
@@ -141,5 +143,9 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
 
    // return $response; 
 });
+
+/*TODO create a get Haz un route get para el login control que devuelve siempre al principal, porque no se p
+Si el user esta logeado y tratamos de acceder desde la propia url, 
+ues se debería quedar ahí (o sea, llamar al route post login control)*/
 
 ?>
