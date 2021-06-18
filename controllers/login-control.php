@@ -72,6 +72,7 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
 
         $_SESSION['user_name']=$responseFromLogIn[0]["user_name"];
         $_SESSION['user_email']=$responseFromLogIn[0]["user_email"];
+        $_SESSION['is_user_logged']=true;
         $_SESSION['valid_user']="yes";
         $_SESSION['alert']="alert-info";
 

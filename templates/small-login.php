@@ -56,7 +56,7 @@
                         <input type="checkbox" class="form-check-input" id="rememberMeInputLogInId" name="login_checkbox_name"> <!-- TODO install cookie when clicked -->
                     </div> 
                    
-
+                    <?php  /*this hidden is to include the validations file later on an if statement*/ ?>
                     <input type="hidden" id="login-form-incoming-id" name="login-form-incoming-name" value="YES"> 
                     <button type="submit" class="btn btn-primary">Submit</button>
 

@@ -81,33 +81,61 @@
         
        
         session_start();
-      
+
+        $baseUrl = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+       
 
         //var_dump ($_SESSION);
 
-        if(isset($_COOKIE["user_name"]) && isset($_COOKIE["user_email"]) && isset($_COOKIE["user_password"]) ){
+        /*we check first of all if there are cookies and user is logged in, user is logged in is needed because one we log,
+        we set that session var and then form is not more needed since we have our session with our user.
+        otherwise also without cheking if user is logged in, form would be submitted without interruption each time we enter this route and cookies are seth.
+        this time is only done when needed (when we open browser)
+        */
 
-            $url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]login-control";
+        if( (isset($_COOKIE["user_name"]) && isset($_COOKIE["user_email"]) && isset($_COOKIE["user_password"])) && (!isset($_SESSION["is_user_logged"])) ) {
+
 
             $data = array("loginEmailName" => $_COOKIE["user_email"], "loginPassName" => $_COOKIE["user_password"]);
 
-            function httpPost($p_url, $p_data)
-            {
-                $curl = curl_init($p_url);
-                curl_setopt($curl, CURLOPT_POST, true);
-                curl_setopt($curl, CURLOPT_POSTFIELDS,$p_data);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                $response = curl_exec($curl);
-                curl_close($curl);
-                //var_dump ($url);
-                //var_dump($response);
-                return $response;
-            }
-
-            $responsePost=httpPost($url, $data);
-
+           /*we sent hidden inputs with mail and apss stored on the cookies to make login again. 
+           the inputs will have same name and so as in small-login.php form, to make it easier
            
+           then with javascript we sent it programatically with submit() method
 
+           but must be done only one time to set the sessi
+           */
+?>
+            <form method="post"  action="./login-control" id="check_cookies_form_id">
+
+
+
+                <input type="hidden" class="form-control" id="loginEMailInputID" name="loginEmailName" value= <?php echo $_COOKIE["user_email"]; ?> >
+
+                <input type="hidden" class="form-control" id="loginPasswordInputID" name="loginPassName" value=<?php echo $_COOKIE["user_password"]; ?> >
+
+
+
+
+                <input type="hidden" id="login-form-incoming-id" name="login-form-incoming-name" value="YES">
+            
+            
+            </form>
+        
+        <script> 
+
+       // alert("hola");
+
+           document.getElementById("check_cookies_form_id").submit();
+        
+        
+        
+        
+        
+         </script>
+
+<?php
            
 
 
@@ -136,6 +164,8 @@
           //  return $response->withHeader("Location", "./login-control");
 
         }
+
+      
         
         if( empty($_SESSION)){
 
