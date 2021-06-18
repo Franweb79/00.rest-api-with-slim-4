@@ -53,7 +53,7 @@
                     <div class="mb-3 form-check">
                         <label class="form-check-label" for="rememberMeInputLogInIdLabel">Remember me</label>
 
-                        <input type="checkbox" class="form-check-input" id="rememberMeInputLogInId"> <!-- TODO install cookie when clicked -->
+                        <input type="checkbox" class="form-check-input" id="rememberMeInputLogInId" name="login_checkbox_name"> <!-- TODO install cookie when clicked -->
                     </div> 
                    
 

@@ -83,7 +83,44 @@
 
         var_dump ($_SESSION);
 
-         if( empty($_SESSION)){
+        if(isset($_COOKIE["user_name"]) && isset($_COOKIE["user_email"]) && isset($_COOKIE["user_password"]) ){
+
+            $url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]login-control";
+
+            $data = array("loginEmailName" => $_COOKIE["user_email"], "loginPassName" => $_COOKIE["user_password"]);
+
+
+            var_dump($url);
+           
+
+
+    die();//TODO this doesnt work, lets see with curl or guzzle. Evryone uses curl so well see
+
+           /* $_POST["loginEmailName"]= $_COOKIE["user_email"];
+            $_POST["loginPassName"]=$_COOKIE["user_password"];
+
+            $data = array("loginEmailName" => $_COOKIE["user_email"], "loginPassName" => $_COOKIE["user_password"]);
+
+            var_dump($data);
+
+            die();
+
+            $_POST["loginEmailName"]= $_COOKIE["user_email"];
+            $_POST["loginPassName"]=$_COOKIE["user_password"];
+
+            $encodedRequest=json_encode($_POST);*/
+
+            //var_dump($encodedRequest);
+
+           // die();
+
+            $response->getBody()->write($encodedRequest);//TODO     QUIZA HAYA QUE MANDAR EL POST CON CURL
+
+            return $response->withHeader("Location", "./login-control");
+
+        }
+        
+        if( empty($_SESSION)){
 
             
         

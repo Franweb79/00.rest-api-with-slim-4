@@ -47,16 +47,28 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
 
       //var_dump($responseFromLogIn);
       
+      /*if there is an user with such email and password, we store everything on a session, create a cookie if "remember" is clicked, redirect to ./ */
+
       if($responseFromLogIn != null){
       /*we need a string to be passed to getbody()->write, so we convert the incoming array on <json></json>*/
 
+        
         session_start();
 
         //var_dump($responseFromLogIn);
 
       // var_dump($responseFromLogIn[0]["user_name"]);
        
-  
+        if( isset($_POST["login_checkbox_name"]) ){
+
+         // echo "cheked";
+
+          setcookie("user_name",$responseFromLogIn[0]["user_name"],time()+86400*30);
+          setcookie("user_email",$responseFromLogIn[0]["user_email"],time()+86400*30);
+          setcookie("user_password",$responseFromLogIn[0]["user_password"],time()+86400*30);
+
+        }
+       
 
         $_SESSION['user_name']=$responseFromLogIn[0]["user_name"];
         $_SESSION['user_email']=$responseFromLogIn[0]["user_email"];
