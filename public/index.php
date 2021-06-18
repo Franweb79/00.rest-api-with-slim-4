@@ -77,11 +77,13 @@
         /*we use session_start() to recover prior sessions if they are
 
         */
+
+        
        
         session_start();
       
 
-        var_dump ($_SESSION);
+        //var_dump ($_SESSION);
 
         if(isset($_COOKIE["user_name"]) && isset($_COOKIE["user_email"]) && isset($_COOKIE["user_password"]) ){
 
@@ -89,12 +91,27 @@
 
             $data = array("loginEmailName" => $_COOKIE["user_email"], "loginPassName" => $_COOKIE["user_password"]);
 
+            function httpPost($p_url, $p_data)
+            {
+                $curl = curl_init($p_url);
+                curl_setopt($curl, CURLOPT_POST, true);
+                curl_setopt($curl, CURLOPT_POSTFIELDS,$p_data);
+                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                $response = curl_exec($curl);
+                curl_close($curl);
+                //var_dump ($url);
+                //var_dump($response);
+                return $response;
+            }
 
-            var_dump($url);
+            $responsePost=httpPost($url, $data);
+
+           
+
            
 
 
-    die();//TODO this doesnt work, lets see with curl or guzzle. Evryone uses curl so well see
+   // die();//TODO this doesnt work, lets see with curl or guzzle. Evryone uses curl so well see
 
            /* $_POST["loginEmailName"]= $_COOKIE["user_email"];
             $_POST["loginPassName"]=$_COOKIE["user_password"];
@@ -114,9 +131,9 @@
 
            // die();
 
-            $response->getBody()->write($encodedRequest);//TODO     QUIZA HAYA QUE MANDAR EL POST CON CURL
+         //  $response->getBody()->write($responsePost);//TODO     QUIZA HAYA QUE MANDAR EL POST CON CURL
 
-            return $response->withHeader("Location", "./login-control");
+          //  return $response->withHeader("Location", "./login-control");
 
         }
         
