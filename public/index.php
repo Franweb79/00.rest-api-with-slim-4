@@ -118,7 +118,7 @@
 
 
 
-                <input type="hidden" id="login-form-incoming-id" name="login-form-incoming-name" value="YES">
+                <input type="hidden" id="login-form-incoming-id" name="automatic-login-form-incoming-name" value="YES">
             
             
             </form>
@@ -187,7 +187,7 @@
         
                 ?>
                         <div class="alert <?php echo $_SESSION['alert'] ?> " role="alert">
-                            WRONG LOGIN, INVALID FORMED OR INCORRECT EMAIL/PASSWORD
+                            WRONG LOGIN, INVALID FORMED EMAIL
                         </div>
                     
                 <?php

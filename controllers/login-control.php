@@ -8,6 +8,8 @@ use Slim\Views\PhpRenderer;
 
 $app->post('/login-control', function (Request $request, Response $response, $args){
 
+    $pass="";/*if $_POST['login-form-incoming-name'] is set, we must hash it, otherwise not because we would hash the hashed password*/
+
     
     /*if a form is coming, we require the code to make the validations*/
     if( isset($_POST['login-form-incoming-name']) ){
@@ -28,7 +30,9 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
          //echo ($isAllOk);
 
         
-     
+         $pass=MD5($_POST["loginPassName"]);
+
+        
 
      }
 
@@ -37,15 +41,28 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
 
      $data = $request->getParsedBody();
 
+     /*if we have no login form coming (that means, is the automatic form, with the values of the cookies inside hidden to restore the session),
+     then we have to avoid hashing of pass again because we would hash the hashed pass*/
+
+     if(isset($_POST['automatic-login-form-incoming-name'])){
+
+
+      $pass=$data["loginPassName"];
+
+      /*var_dump("no incoming form");
+
+      die();*/
+
+     }
      
 
     
      $userObject=new User();
 
      /*this will return a jsonencoded response, which we will write on the body of the reponse of this route*/
-      $responseFromLogIn=$userObject->userLogin($data["loginEmailName"], $data["loginPassName"]);/*this must be done with the $data*/
+      $responseFromLogIn=$userObject->userLogin($data["loginEmailName"], $pass);/*this must be done with the $data*/
 
-      //var_dump($responseFromLogIn);
+      var_dump($responseFromLogIn);
       
       /*if there is an user with such email and password, we store everything on a session, create a cookie if "remember" is clicked, redirect to ./ */
 
@@ -92,14 +109,20 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
 
         
 
+      }else {
+        /*if is null, to the /, cause session or user is not valid*/
+
+        /* TODO MUST BE A RETURN REPSONSE HERE IF NO CORRECT USER*/
+        /*SEND A FLAG OR A SESSION VAR OR SOMETHING TO TELL USER OR PASS IS WRONG, not invalid formed but wrong*/
+
+        return $response->withHeader("Location", "./");
       }
     
     
     
-      /* TODO MUST BE A RETURN REPSONSE HERE IF NO CORRECT USER*/
     
 
-      return $response;
+     // return $response;
 
     //var_dump($data);
 

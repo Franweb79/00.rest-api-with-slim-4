@@ -21,6 +21,8 @@
 
 
               $sql = "SELECT * from users where  (user_email = :usermail) AND (user_password = :userpass)"; 
+
+              /*we hash the pass because password is hashed and mustr check*/
               
             try{
 
