@@ -11,6 +11,8 @@
         private $user_password;
 
         /*to check if user is on db or not*/
+
+        /* TODO must set password with hash*/
         public function userLogin($user_email,$user_password){
 
            /*$sql = "SELECT * from users where  (user_email = '".$user_email."') AND (user_password = '".$user_password."')"; /* TODO this but with prepared statements (look get-user.php), and using the data the login-control.php 
