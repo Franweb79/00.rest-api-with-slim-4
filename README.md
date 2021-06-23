@@ -1,3 +1,6 @@
+# 
+# this branch will be used to create a more secure way to store session on cookies, with a session token
+
 # on .gitignore we will ignore 
 
 # -docs (private guides) 
