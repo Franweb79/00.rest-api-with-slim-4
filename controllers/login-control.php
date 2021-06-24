@@ -62,9 +62,7 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
      /*this will return a jsonencoded response, which we will write on the body of the reponse of this route*/
       $responseFromLogIn=$userObject->userLogin($data["loginEmailName"], $pass);/*this must be done with the $data*/
 
-      //test the createToken code
-
-      var_dump($userObject->createToken());
+     
 
      
       //var_dump($responseFromLogIn);
@@ -77,7 +75,17 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
         
         session_start();
 
+        /*we set the token for this session. we still dont have the id_user on s session so
+        we make with $responseFromLogIn[0]["id_user"]
 
+        also to be sure we obtain the same token we have inserted on set token and store it to the session, we overwrite the token
+        obtained on the userLogin query 
+
+        that is because we have done the query to retrieve all user data before, and the token we have on the responseFronLogin is different,
+        it is the prior token
+
+          */
+        $responseFromLogIn[0]['session_token']=$userObject->setToken($responseFromLogIn[0]["id_user"]);
        
         if( isset($_POST["login_checkbox_name"]) ){
 
@@ -88,22 +96,26 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
           setcookie("user_password",$responseFromLogIn[0]["user_password"],time()+86400*30);
 
         }
+
+        //$userObject->setToken($_SESSION['id_user']);
+
        
         $_SESSION['id_user']=$responseFromLogIn[0]["id_user"];
         $_SESSION['user_name']=$responseFromLogIn[0]["user_name"];
         $_SESSION['user_email']=$responseFromLogIn[0]["user_email"];
+        $_SESSION['session_token']=$responseFromLogIn[0]['session_token']; 
+
         $_SESSION['is_user_logged']=true;
         $_SESSION['valid_user']="yes";
         $_SESSION['alert']="alert-info";
 
-        //TODO aqui tendremos que setear el token y meterlo, segun la id del user
+        //var_dump ("el token agregado al s session es".  $_SESSION['session_token']);
 
-        var_dump( $_SESSION['id_user']);
-
-        $userObject->setToken($_SESSION['id_user']);
+        //
+       
 
       
-
+        /*also we will update the res
 
         /* TODO look how to pass an netire object to a session*/
 
@@ -112,6 +124,9 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
        // var_dump ($jencoded);
 
         $response->getBody()->write($jencoded);
+
+        
+      
 
        // var_dump($response->getBody());
 

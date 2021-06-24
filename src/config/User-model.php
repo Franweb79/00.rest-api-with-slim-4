@@ -132,6 +132,10 @@
 
                  $conObj = null; // clear db object (close the connection)
 
+                 //var_dump("e token dentro de set token es". $token);
+
+                 return $token;
+
             }catch(PDOException $ex){
 
                 return "{'errormessage': . '$ex'}";
