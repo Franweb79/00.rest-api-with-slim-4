@@ -143,6 +143,10 @@
             }
 
         }
+
+        public function checkUserSessionWithCookieToken($p_cookieToken){
+
+        }
     }
 
 ?>

@@ -46,12 +46,14 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
 
      if(isset($_POST['automatic-login-form-incoming-name'])){
 
+      //TODO this must be done with the session token on the cookies
+      $cookieToken=$data['session-token-on-cookie-name'];
 
-      $pass=$data["loginPassName"];
+      //TODO now use the checkUserSessionWithCookieToken($cookieToken) to see if cookie token is the same as storen on database
 
-      /*var_dump("no incoming form");
+      var_dump("cookie token". $cookieToken);
 
-      die();*/
+      die();
 
      }
      
@@ -91,9 +93,12 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
 
          // echo "cheked";
 
-          setcookie("user_name",$responseFromLogIn[0]["user_name"],time()+86400*30);
+         setcookie("s-token",  $responseFromLogIn[0]['session_token'],time()+86400*30);
+
+
+         /* setcookie("user_name",$responseFromLogIn[0]["user_name"],time()+86400*30);
           setcookie("user_email",$responseFromLogIn[0]["user_email"],time()+86400*30);
-          setcookie("user_password",$responseFromLogIn[0]["user_password"],time()+86400*30);
+          setcookie("user_password",$responseFromLogIn[0]["user_password"],time()+86400*30);*/
 
         }
 

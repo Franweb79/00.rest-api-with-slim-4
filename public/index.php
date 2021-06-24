@@ -94,10 +94,10 @@
         this time is only done when needed (when we open browser)
         */
 
-        if( (isset($_COOKIE["user_name"]) && isset($_COOKIE["user_email"]) && isset($_COOKIE["user_password"])) && (!isset($_SESSION["is_user_logged"])) ) {
+        if( (isset($_COOKIE["s-token"])) && (!isset($_SESSION["is_user_logged"])) ) {
 
 
-            $data = array("loginEmailName" => $_COOKIE["user_email"], "loginPassName" => $_COOKIE["user_password"]);
+           // $data = array("loginEmailName" => $_COOKIE["user_email"], "loginPassName" => $_COOKIE["user_password"]);
 
            /*we sent hidden inputs with mail and apss stored on the cookies to make login again. 
            the inputs will have same name and so as in small-login.php form, to make it easier
@@ -111,9 +111,8 @@
 
 
 
-                <input type="hidden" class="form-control" id="loginEMailInputID" name="loginEmailName" value= <?php echo $_COOKIE["user_email"]; ?> >
 
-                <input type="hidden" class="form-control" id="loginPasswordInputID" name="loginPassName" value=<?php echo $_COOKIE["user_password"]; ?> >
+                <input type="hidden" class="form-control" id="session-token-on-cookie-id" name="session-token-on-cookie-name" value=<?php echo $_COOKIE["s-token"]; ?> >
 
 
 
