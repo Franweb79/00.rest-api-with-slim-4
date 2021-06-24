@@ -62,7 +62,12 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
      /*this will return a jsonencoded response, which we will write on the body of the reponse of this route*/
       $responseFromLogIn=$userObject->userLogin($data["loginEmailName"], $pass);/*this must be done with the $data*/
 
-      var_dump($responseFromLogIn);
+      //test the createToken code
+
+      var_dump($userObject->createToken());
+
+     
+      //var_dump($responseFromLogIn);
       
       /*if there is an user with such email and password, we store everything on a session, create a cookie if "remember" is clicked, redirect to ./ */
 
@@ -72,9 +77,7 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
         
         session_start();
 
-        //var_dump($responseFromLogIn);
 
-      // var_dump($responseFromLogIn[0]["user_name"]);
        
         if( isset($_POST["login_checkbox_name"]) ){
 
@@ -86,12 +89,20 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
 
         }
        
-
+        $_SESSION['id_user']=$responseFromLogIn[0]["id_user"];
         $_SESSION['user_name']=$responseFromLogIn[0]["user_name"];
         $_SESSION['user_email']=$responseFromLogIn[0]["user_email"];
         $_SESSION['is_user_logged']=true;
         $_SESSION['valid_user']="yes";
         $_SESSION['alert']="alert-info";
+
+        //TODO aqui tendremos que setear el token y meterlo, segun la id del user
+
+        var_dump( $_SESSION['id_user']);
+
+        $userObject->setToken($_SESSION['id_user']);
+
+      
 
 
         /* TODO look how to pass an netire object to a session*/

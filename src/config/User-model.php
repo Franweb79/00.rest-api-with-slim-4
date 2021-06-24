@@ -93,6 +93,52 @@
             }
 
         }
+
+        public function createToken(){
+
+            //Generate a random string.
+            $token = openssl_random_pseudo_bytes(16);
+
+            //Convert the binary data into hexadecimal representation.
+            $token = bin2hex($token);
+
+            //Print it out for example purposes.
+            return $token;
+
+        }
+
+        /*insert token when user is logged in*/
+        public function setToken($p_id_user){
+
+            $token=$this->createToken();
+
+            //is an update because value at the beginning is null
+            //$sql="INSERT into users (session_token) VALUES (:p_token) where  (id_user = :p_id_user)";
+            $sql="UPDATE users 
+                SET session_token = :p_token
+                WHERE (id_user = :p_id_user)
+                ";
+
+            try{
+
+                $conObj=new Connection();
+
+                $conn=$conObj->connect();
+
+                $sth =$conn->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+
+                 /*execute is for prepared sentence*/
+                 $sth->execute( array(':p_token' => $token, ':p_id_user' => $p_id_user) ) ;
+
+                 $conObj = null; // clear db object (close the connection)
+
+            }catch(PDOException $ex){
+
+                return "{'errormessage': . '$ex'}";
+
+            }
+
+        }
     }
 
 ?>
