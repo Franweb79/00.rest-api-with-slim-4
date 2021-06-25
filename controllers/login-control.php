@@ -57,23 +57,35 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
 
      // var_dump("cookie token". $cookieToken);
 
-     // $responseFromLogIn=$userObject->checkUserSessionWithCookieToken($cookieToken);/*this must be done with the $data*/
+      $responseFromLogIn=$userObject->checkUserSessionWithCookieToken($cookieToken);/*this must be done with the $data*/
 
      // var_dump($responseFromLogIn);
 
      // die();
 
-      //TODO dont know if this unset is neccesary, we will see
+      
 
     
-
+/*if we have an user, we start session like after regular userLogin method*/
       if(count($responseFromLogIn)>0){
-        $jencoded=json_encode($responseFromLogIn);
 
-       var_dump ($jencoded);
+        session_start();
+
+        $_SESSION['id_user']=$responseFromLogIn[0]["id_user"];
+        $_SESSION['user_name']=$responseFromLogIn[0]["user_name"];
+        $_SESSION['user_email']=$responseFromLogIn[0]["user_email"];
+        $_SESSION['session_token']=$responseFromLogIn[0]['session_token']; 
+
+        $_SESSION['is_user_logged']=true;
+        $_SESSION['valid_user']="yes";
+        $_SESSION['alert']="alert-info";
+
+       $jencoded=json_encode($responseFromLogIn);
+
+       //var_dump ($jencoded);
 
      
-
+        
         $response->getBody()->write($jencoded);
 
     
@@ -82,12 +94,12 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
        // var_dump($response->getBody());
 
        
-        //return $response->withHeader("Location", "./");
+        return $response->withHeader("Location", "./");
       }else{
 
-        
+        session_destroy();
 
-        //return $response->withHeader("Location", "./");
+        return $response->withHeader("Location", "./");
       }
 
       

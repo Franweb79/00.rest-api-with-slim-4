@@ -88,13 +88,17 @@
 
         //var_dump ($_SESSION);
 
-        /*we check first of all if there are cookies and user is logged in, user is logged in is needed because one we log,
-        we set that session var and then form is not more needed since we have our session with our user.
+        /*we check first of all if there are cookies and user is logged in, user is logged in, is needed because once we log,
+        we set that session var and then login form is not more needed since we have our session with our user.
         otherwise also without cheking if user is logged in, form would be submitted without interruption each time we enter this route and cookies are seth.
         this time is only done when needed (when we open browser)
         */
 
-        if( (isset($_COOKIE["s-token"])) && (!isset($_SESSION["is_user_logged"])) ) {
+        /*so, if we have the cookie and user is still 
+        not logged in -that means, he has not entered password or he reopens browser when he was logged in*/
+
+        if( (isset($_COOKIE["s-token"])) && (!isset($_SESSION["is_user_logged"]) )  ) {
+
 
 
            // $data = array("loginEmailName" => $_COOKIE["user_email"], "loginPassName" => $_COOKIE["user_password"]);
