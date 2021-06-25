@@ -41,6 +41,8 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
 
      $data = $request->getParsedBody();
 
+     //var_dump($data);
+
      /*if we have no login form coming (that means, is the automatic form, with the values of the cookies inside hidden to restore the session),
      then we have to avoid hashing of pass again because we would hash the hashed pass*/
 
@@ -51,9 +53,44 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
 
       //TODO now use the checkUserSessionWithCookieToken($cookieToken) to see if cookie token is the same as storen on database
 
-      var_dump("cookie token". $cookieToken);
+      $userObject=new User();
 
-      die();
+     // var_dump("cookie token". $cookieToken);
+
+     // $responseFromLogIn=$userObject->checkUserSessionWithCookieToken($cookieToken);/*this must be done with the $data*/
+
+     // var_dump($responseFromLogIn);
+
+     // die();
+
+      //TODO dont know if this unset is neccesary, we will see
+
+    
+
+      if(count($responseFromLogIn)>0){
+        $jencoded=json_encode($responseFromLogIn);
+
+       var_dump ($jencoded);
+
+     
+
+        $response->getBody()->write($jencoded);
+
+    
+      
+
+       // var_dump($response->getBody());
+
+       
+        //return $response->withHeader("Location", "./");
+      }else{
+
+        
+
+        //return $response->withHeader("Location", "./");
+      }
+
+      
 
      }
      
