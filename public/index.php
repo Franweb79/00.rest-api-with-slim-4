@@ -78,7 +78,7 @@
 
         */
 
-        
+       
        
         session_start();
 
@@ -142,31 +142,22 @@
            
 
 
-   // die();//TODO this doesnt work, lets see with curl or guzzle. Evryone uses curl so well see
+        }/*else if( !isset($_COOKIE["s-token"])  && isset($_SESSION["is_user_logged"]) ){
 
-           /* $_POST["loginEmailName"]= $_COOKIE["user_email"];
-            $_POST["loginPassName"]=$_COOKIE["user_password"];
+            /*this is to prevent page being reloaded and if cookie is deleted whern user is logged in, if he does, then out to lgin,
+             we make it on an else if to avoid
+            
+            it is executed when user is logged in but hasnt click "remember me", nbecause it would otherwise destroy the session 
+            */
+          //  session_destroy();
 
-            $data = array("loginEmailName" => $_COOKIE["user_email"], "loginPassName" => $_COOKIE["user_password"]);
+           // var_dump("cookie deleted and reloaded page");
 
-            var_dump($data);
+            //die();
 
-            die();
-
-            $_POST["loginEmailName"]= $_COOKIE["user_email"];
-            $_POST["loginPassName"]=$_COOKIE["user_password"];
-
-            $encodedRequest=json_encode($_POST);*/
-
-            //var_dump($encodedRequest);
-
-           // die();
-
-         //  $response->getBody()->write($responsePost);//TODO     QUIZA HAYA QUE MANDAR EL POST CON CURL
-
-          //  return $response->withHeader("Location", "./login-control");
-
-        }
+           // 
+            header('Location:./');
+       // }
 
       
         
@@ -321,4 +312,7 @@
     // Run app
     $app->run();
 
+    
+
 ?>
+

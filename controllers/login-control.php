@@ -10,7 +10,7 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
 
     $pass="";/*if $_POST['login-form-incoming-name'] is set, we must hash it, otherwise not because we would hash the hashed password*/
 
-    
+  
     /*if a form is coming, we require the code to make the validations*/
     if( isset($_POST['login-form-incoming-name']) ){
 
