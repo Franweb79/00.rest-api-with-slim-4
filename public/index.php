@@ -43,6 +43,12 @@
 
     require '../src/routes/register.php';
 
+    //logout route
+
+    require '../controllers/close-session-control.php';
+
+
+
 
 
 

@@ -5,7 +5,7 @@
 
 ?>
 
-<form method="post" action="" id="close-session-form-id">
+<form method="post" action="./close-session-control" id="close-session-form-id">
 
     <input type="hidden" name="close-session-input-name" value="yes"/>
 
