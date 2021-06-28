@@ -5,11 +5,13 @@
     //this are namespaces
     use Psr\Http\Message\ResponseInterface as Response;
     use Psr\Http\Message\ServerRequestInterface as Request;
+    use Psr\Http\Server\RequestHandlerInterface as RequestHandler; //for the middleware
     use Selective\BasePath\BasePathMiddleware;
     use Psr\Http\Message\ResponseInterface;
     use Slim\Exception\HttpNotFoundException;
     use Slim\Factory\AppFactory;
     use Selective\BasePath\BasePathDetector;
+
 
     use Slim\Views\PhpRenderer;
 
@@ -73,8 +75,33 @@
     $app->setBasePath("/00.rest-api-with-slim-4/public");
     $app->addErrorMiddleware(true, true, true);
 
-    
+    $firstMiddleware=function(Request $request, RequestHandler $handler){
+
+        $response = $handler->handle($request);
+
+        $existingContent = (string) $response->getBody();
+
+      //  $response = new Response();
+
+        $response->getBody()->write("first middleware ". $existingContent);
+
+      
+
+        return $response;
+    };
+
+    $secondMiddleware=function(Request $request, RequestHandler $handler){
+
+        $response = $handler->handle($request);
+
+        $response->getBody()->write("second middleware");
+
+        return $response;
+    };
   
+    $app->add($firstMiddleware);
+    $app->add($secondMiddleware);
+
 
     // Define app routes
     $app->get('/', function (Request $request, Response $response, $args) {
