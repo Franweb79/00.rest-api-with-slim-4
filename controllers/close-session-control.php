@@ -23,7 +23,7 @@
 
                
 
-                setcookie('s-token','', time() - 3600, '/');
+                setcookie('s-token','', time() - 3600);
 
                 var_dump($_COOKIE['s-token']);
 
