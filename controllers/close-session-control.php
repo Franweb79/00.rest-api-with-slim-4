@@ -11,6 +11,41 @@
 
         $data=$request->getParsedBody();
 
+       // var_dump($data["close-session-input-name"]);
+
+        if(  (isset($data["close-session-input-name"])) && ($data["close-session-input-name"]=="yes")     ){
+
+            if(   isset($_COOKIE['s-token'])   ){
+
+               // var_dump("cookie set");
+
+               var_dump($_COOKIE['s-token']);
+
+               
+
+                setcookie('s-token','', time() - 3600, '/');
+
+                var_dump($_COOKIE['s-token']);
+
+                
+
+                unset($_COOKIE['s-token']);
+            }
+         
+            
+            //session_destroy();
+
+            $_SESSION['alert']="alert-primary";
+           
+            var_dump( $_SESSION['alert']);
+
+            var_dump($response);
+
+            
+
+            return $response->withHeader('Location', './');
+        }
+
         $jsondata=json_encode($data);
 
         $response->getBody()->write($jsondata);

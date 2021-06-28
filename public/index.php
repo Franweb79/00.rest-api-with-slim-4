@@ -198,7 +198,28 @@
                         return $renderer->render($response, "small-login.php", $args); 
             }
 
-           
+            if($_SESSION['alert']=="alert-primary"){
+
+              
+        
+                ?>
+                        <div class="alert <?php echo $_SESSION['alert'] ?> " role="alert">
+                           closed session
+                        </div>
+                    
+                <?php
+        
+                        session_destroy();
+
+                        $renderer = new PhpRenderer('../templates');
+
+                        return $renderer->render($response, "small-login.php", $args); 
+
+
+
+            }
+
+            unset($_SESSION['alert']);
 
         }
             
