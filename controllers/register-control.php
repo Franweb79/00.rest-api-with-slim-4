@@ -5,6 +5,12 @@
 
     $app->post('/register-control', function( Request $request, Response $response){
 
+       var_dump($request->getParsedBody());
+
+       $data=$request->getParsedBody();
+
+       var_dump($data["register-email-input-name"]);
+       
         var_dump($response->getbody()->write("hola"));
 
         return $response;
