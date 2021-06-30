@@ -52,10 +52,9 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
 
      if(isset($_POST['automatic-login-form-incoming-name'])){
 
-      //TODO this must be done with the session token on the cookies
       $cookieToken=$data['session-token-on-cookie-name'];
 
-      //TODO now use the checkUserSessionWithCookieToken($cookieToken) to see if cookie token is the same as storen on database
+      // now use the checkUserSessionWithCookieToken($cookieToken) to see if cookie token is the same as storen on database
 
       $userObject=new User();
 
@@ -175,7 +174,6 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
       
         /*also we will update the res
 
-        /* TODO look how to pass an netire object to a session*/
 
         $jencoded=json_encode($responseFromLogIn);
 
@@ -228,8 +226,6 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
    // return $response; 
 });
 
-/*TODO create a get Haz un route get para el login control que devuelve siempre al principal, porque no se p
-Si el user esta logeado y tratamos de acceder desde la propia url, 
-ues se debería quedar ahí (o sea, llamar al route post login control)*/
+
 
 ?>

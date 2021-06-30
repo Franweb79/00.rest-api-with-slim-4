@@ -250,7 +250,6 @@
 
         }
             
-       // TODO si la sesion esta vacia (primera vez), o el form esta mal, se muestra el template. primer caso sin aviso, segunda con él
       
 
         
@@ -262,7 +261,6 @@
 
         if( isset($_SESSION["valid_user"]) && $_SESSION['valid_user']=="yes" ){
         
-            //TODO METER OTRA TEMPLATE CON LOS ENDPOINT YA AQUI
         
              if( ( isset($_SESSION['alert']) ) && ( $_SESSION['alert']=="alert-info" ) ){
 
@@ -276,7 +274,6 @@
         /* MUST DESTROY THE SESSION VARIABLE FOR THE session alert info, TO AVOID FLAG BEING SHOW*/
                 unset($_SESSION['alert']);
 
-               // session_destroy(); /*TODO delete this, only for thests, must make a close session button when correctly logged on the endpoint template*/
 
              }
 

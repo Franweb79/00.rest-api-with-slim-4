@@ -2,7 +2,6 @@
 
 /*https://tryphp.w3schools.com/showphp.php?filename=demo_form_validation_required*/
 
-// TODO this one will be included also on the register form, where is more important than in login form*/
 
 //echo "hola";
 

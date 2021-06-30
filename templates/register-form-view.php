@@ -24,11 +24,8 @@
                         hacer otro php de validaciones del login si no conseguimos hacer una condicion para el header location segun de que ruta o algo 
                         asi haya venido la request 
                         
-                        TODO validate this form as said here https://tryphp.w3schools.com/showphp.php?filename=demo_form_validation_required
                         
-                            AND HERE 
-
-                            https://stackoverflow.com/questions/22544250/php-password-validation
+                           
 
                             //TODO MAYBE we use a library https://github.com/vlucas/valitron
                             //TODO remember passowrd must be HASHED!
