@@ -10,6 +10,8 @@
     use Slim\Factory\AppFactory;
     use Selective\BasePath\BasePathDetector;
 
+    use Valitron\Validator as V;
+
     use Slim\Views\PhpRenderer;
 
     $app->get('/register', function ($request, $response, $args) {

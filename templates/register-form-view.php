@@ -20,7 +20,7 @@
 
                     <div class="col-sm">
 
-                        <form> <?php /* TODO habraa que hacer que si fallan las validaciones, me devuelva al register, y quiza haya que 
+                        <form method="post" action="./register-control"> <?php /* TODO habraa que hacer que si fallan las validaciones, me devuelva al register, y quiza haya que 
                         hacer otro php de validaciones del login si no conseguimos hacer una condicion para el header location segun de que ruta o algo 
                         asi haya venido la request 
                         
@@ -44,7 +44,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="registerNameInputIDLabel" class="form-label">Email address*</label>
-                                <input type="email" class="form-control" id="registerEMailInputID" aria-describedby="emailHelp" required>
+                                <input type="email" class="form-control" id="registerEMailInputID" name="register-email-input-name" aria-describedby="emailHelp" required>
                                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else. Must contain a valid email address (with @ and .)</div>
                             </div>
 

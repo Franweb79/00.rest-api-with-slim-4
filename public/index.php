@@ -44,11 +44,16 @@
     require '../src/config/User-model.php';
 
     require '../src/routes/register.php';
+    require '..//controllers/register-control.php';
+
 
     //logout route
 
     require '../controllers/close-session-control.php';
 
+
+
+   
 
 
 
