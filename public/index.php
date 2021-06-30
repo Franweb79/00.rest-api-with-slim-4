@@ -99,8 +99,8 @@
         return $response;
     };
   
-    $app->add($firstMiddleware);
-    $app->add($secondMiddleware);
+    /*$app->add($firstMiddleware);
+    $app->add($secondMiddleware);*/
 
 
     // Define app routes

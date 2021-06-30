@@ -2,6 +2,33 @@
     use Psr\Http\Message\ServerRequestInterface as Request;
     use Psr\Http\Message\ResponseInterface as Response;
 
+    use Psr\Http\Server\RequestHandlerInterface as RequestHandler; //for the middleware
+
+    
+
+
+    $logginControlMiddleware=function(Request $request, RequestHandler $handler){
+
+        
+
+        $response = $handler->handle($request);
+      
+        if( !isset($_SESSION['is_user_logged']) && !isset($_COOKIE['s-token']) ){
+
+           
+
+      
+          return $response->withHeader('Location', './');
+      
+        }
+        else
+        {
+            return $response;
+        }
+      
+      
+    };
+
     /**
     * Get users
     */
@@ -69,4 +96,4 @@
         }
 
         return $response->withHeader('Content-Type', 'application/json');
-    });
+    })->add($logginControlMiddleware);

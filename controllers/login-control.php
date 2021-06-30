@@ -4,7 +4,11 @@
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
+
 use Slim\Views\PhpRenderer;
+
+
+
 
 $app->post('/login-control', function (Request $request, Response $response, $args){
 
@@ -142,7 +146,7 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
 
          // echo "cheked";
 
-         setcookie("s-token",  $responseFromLogIn[0]['session_token'],time()+86400*30);
+            setcookie("s-token",  $responseFromLogIn[0]['session_token'],time()+86400*30);
 
 
          /* setcookie("user_name",$responseFromLogIn[0]["user_name"],time()+86400*30);
