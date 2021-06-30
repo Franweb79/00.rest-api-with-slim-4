@@ -15,7 +15,7 @@
       
         if( !isset($_SESSION['is_user_logged']) && !isset($_COOKIE['s-token']) ){
 
-           
+         
 
       
           return $response->withHeader('Location', './');
@@ -35,6 +35,7 @@
     // create GET HTTP request
     $app->get('/get-all-items', function( Request $request, Response $response){
 
+        session_start(); //we need to make thew middleware work correctly, in order to recover the session
 
         $sql = "SELECT * FROM items";
 

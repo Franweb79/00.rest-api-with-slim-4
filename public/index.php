@@ -280,6 +280,8 @@
 
              }
 
+             //var_dump($_SESSION);
+
              $renderer = new PhpRenderer('../templates');
 
              return $renderer->render($response, "routes-table-view.php", $args); 
