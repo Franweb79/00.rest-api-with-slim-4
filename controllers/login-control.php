@@ -12,7 +12,10 @@ use Slim\Views\PhpRenderer;
 
 $app->post('/login-control', function (Request $request, Response $response, $args){
 
-    $pass="";/*if $_POST['login-form-incoming-name'] is set, we must hash it, otherwise not because we would hash the hashed password*/
+    /*if $_POST['login-form-incoming-name'] is set, we must hash the password, 
+    otherwise NOT because we would hash the already hashed password*/
+
+    $pass="";
 
   
     /*if a form is coming, we require the code to make the validations*/
@@ -20,18 +23,9 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
 
             
 
-        // $response->getBody()->write($_POST['login-form-incoming-name']);
-
-        // require "../controllers/login-form-validations.php";
+        
 
         require "../controllers/login-form-validations.php";
-     
-
-         /*$renderer = new PhpRenderer('../templates');
-
-         $renderer->render($response, "small-login.php", $args);*/
-
-         //echo ($isAllOk);
 
         
          $pass=MD5($_POST["loginPassName"]);
@@ -40,12 +34,11 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
 
      }
 
-     /*once everything is correct regarding validations, we will have to check againt data base if email or pass exists on 
+     /*once everything is correct regarding validations, we will have to check against database if email or pass exists on 
      the user dabatase*/
 
      $data = $request->getParsedBody();
 
-     //var_dump($data);
 
      /*if we have no login form coming (that means, is the automatic form, with the values of the cookies inside hidden to restore the session),
      then we have to avoid hashing of pass again because we would hash the hashed pass*/
@@ -54,17 +47,14 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
 
       $cookieToken=$data['session-token-on-cookie-name'];
 
-      // now use the checkUserSessionWithCookieToken($cookieToken) to see if cookie token is the same as storen on database
 
       $userObject=new User();
 
-     // var_dump("cookie token". $cookieToken);
+    
 
       $responseFromLogIn=$userObject->checkUserSessionWithCookieToken($cookieToken);/*this must be done with the $data*/
 
-     // var_dump($responseFromLogIn);
-
-     // die();
+     
 
       
 
@@ -85,7 +75,7 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
 
        $jencoded=json_encode($responseFromLogIn);
 
-       //var_dump ($jencoded);
+       
 
      
         
@@ -94,7 +84,7 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
     
       
 
-       // var_dump($response->getBody());
+      
 
        
         return $response->withHeader("Location", "./");
@@ -119,18 +109,20 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
      
 
      
-      //var_dump($responseFromLogIn);
       
-      /*if there is an user with such email and password, we store everything on a session, create a cookie if "remember" is clicked, redirect to ./ */
+      /*if there is an user with such email and password ($responseFromLogIn is not null), 
+      we 1-store everything on a session, 
+         2-create a cookie if "remember" is clicked, 
+         3-and redirect to ./ */
 
       if($responseFromLogIn != null){
-      /*we need a string to be passed to getbody()->write, so we convert the incoming array on <json></json>*/
+
 
         
         session_start();
 
-        /*we set the token for this session. we still dont have the id_user on s session so
-        we make with $responseFromLogIn[0]["id_user"]
+        /*we set the token for this session. we still dont have the id_user on $_SESSION so
+        we take it with $responseFromLogIn[0]["id_user"]
 
         also to be sure we obtain the same token we have inserted on set token and store it to the session, we overwrite the token
         obtained on the userLogin query 
@@ -143,18 +135,14 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
        
         if( isset($_POST["login_checkbox_name"]) ){
 
-         // echo "cheked";
 
             setcookie("s-token",  $responseFromLogIn[0]['session_token'],time()+86400*30);
 
 
-         /* setcookie("user_name",$responseFromLogIn[0]["user_name"],time()+86400*30);
-          setcookie("user_email",$responseFromLogIn[0]["user_email"],time()+86400*30);
-          setcookie("user_password",$responseFromLogIn[0]["user_password"],time()+86400*30);*/
+        
 
         }
 
-        //$userObject->setToken($_SESSION['id_user']);
 
        
         $_SESSION['id_user']=$responseFromLogIn[0]["id_user"];
@@ -166,64 +154,28 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
         $_SESSION['valid_user']="yes";
         $_SESSION['alert']="alert-info";
 
-        //var_dump ("el token agregado al s session es".  $_SESSION['session_token']);
-
-        //
-       
-
-      
-        /*also we will update the res
-
-
-        $jencoded=json_encode($responseFromLogIn);
-
-       // var_dump ($jencoded);
-
-        $response->getBody()->write($jencoded);
 
         
-      
+       
 
-       // var_dump($response->getBody());
 
        
         return $response->withHeader("Location", "./");
 
         
 
-      }else {
-        /*if is null, to the /, cause session or user is not valid*/
+      }/*else {
+        //if $responseFromLogIn is not null, to the /, cause session or user is not valid
 
-        /* TODO MUST BE A RETURN REPSONSE HERE IF NO CORRECT USER*/
+         // TODO MUST BE A RETURN REPSONSE HERE IF NO CORRECT USER
 
         
-        /*SEND A FLAG OR A SESSION VAR OR SOMETHING TO TELL USER OR PASS IS WRONG, not invalid formed but wrong*/
+        //SEND A FLAG OR A SESSION VAR OR SOMETHING TO TELL USER OR PASS IS WRONG, not invalid formed but wrong
 
         return $response->withHeader("Location", "./");
-      }
+      }*/
     
     
-    
-    
-
-     // return $response;
-
-    //var_dump($data);
-
-    //var_dump($data['loginEMailInputID']);
-
-   // $responseJSONencoded=json_encode($data);
-    
-    //$html = var_export($data, true);
-   // $response->getBody()->write($responseJSONencoded);
-
-   // $response->getBody()->write($html);
-   
-  
-   
-    //return $response->withHeader('Content-Type', 'application/json');
-
-   // return $response; 
 });
 
 
