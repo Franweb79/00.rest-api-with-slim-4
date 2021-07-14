@@ -5,30 +5,56 @@
 
     use Valitron\Validator as V;
 
+    /* 
+    
+        this route validates the form to register a new user.
+        It comes from register.php file.
+        We use the valitron library to validfate fields:
+
+        https://github.com/vlucas/valitron
+    */ 
+
     $app->post('/register-control', function( Request $request, Response $response){
 
-       var_dump($request->getParsedBody());
+       
 
-      
+       session_start();
 
        $data=$request->getParsedBody();
 
-      // $v = new Valitron\Validator($_POST);
+       /*
+            check if passowrd field and confirm password are the same.
+        */
 
-      $v = new Valitron\Validator($data);
+       if( $data["register-pass-input-1"] === $data["register-pass-input-2"]){
 
-       $v->rule('email', 'register-email-input-name');
+        //validate everything here, and hash the password
 
-       //var_dump($data["register-email-input-name"]);
+            
+            $v = new Valitron\Validator($data);
 
-       if($v->validate()) {
-            echo "Yay! We're all good!";
-        } else {
-        // Errors
-            print_r($v->errors());
-        }
+            $v->rule('email', 'register-email-input-name');
+
+            
+            if($v->validate()) {
+                echo "Yay! We're all good!";
+            } else {
+                // Errors
+                print_r($v->errors());
+            }
+
+       }else{
+
+            $_SESSION['pass-fields-not-equal']="yes";
+
+            return $response->withHeader('Location', './register');
+
+       }
+
+      
+
+
        
-       // var_dump($response->getbody()->write("hola"));
 
         return $response;
 

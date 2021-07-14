@@ -6,13 +6,25 @@
         </head>
         <body>
 
-            <!--<form method="POST" action="./register-control">
-                <label>Name: <input name="name"></label>
-                <label>Country: <input name="country"></label>
-                <input type="submit">
-            </form>-->
 
             <div class="container">
+
+                <?php
+                           
+                     //TODO remember passowrd must be HASHED!
+
+
+                        if(isset ($_SESSION['pass-fields-not-equal']) ){
+                ?>
+                            <div class="alert alert-danger" role="alert">
+                                Password fields don´t match
+                            </div>
+                 <?php
+                            session_destroy();
+                        }
+
+                ?>
+                
                 <div class="row">
                     <div class="col-sm">
 
@@ -20,26 +32,15 @@
 
                     <div class="col-sm">
 
-                        <form method="post" action="./register-control"> <?php /* TODO habraa que hacer que si fallan las validaciones, me devuelva al register, y quiza haya que 
-                        hacer otro php de validaciones del login si no conseguimos hacer una condicion para el header location segun de que ruta o algo 
-                        asi haya venido la request 
-                        
-                        
-                           
-
-                            //TODO MAYBE we use a library https://github.com/vlucas/valitron
-                            //TODO remember passowrd must be HASHED!
-
-                        */
-                        
-                        ?>
+                        <form method="post" action="./register-control">
                     
+                            
                             <div class="mb-3">
                                 <p><h2>REGISTER </h2></p>
                             </div>
                             <div class="mb-3">
                                 <label for="registerNameInputIDLabel" class="form-label">Name:</label>
-                                <input type="text" class="form-control" id="registerNameInputID" aria-describedby="nameHelp" required>
+                                <input type="text" class="form-control" id="registerNameInputID" name="register-name-input-name" aria-describedby="nameHelp" required>
                                 <div id="nameHelp" class="form-text">Min 3 - max 10 characters. Only letters and whitespaces allowed</div>
                             </div>
                             <div class="mb-3">
@@ -50,14 +51,14 @@
 
                             <div class="mb-3">
                                 <label for="registerPasswordInputID1Label" class="form-label">Password*</label>
-                                <input type="password" class="form-control" id="registerPasswordInputID1" aria-describedby="passwordHelp" required>
+                                <input type="password" class="form-control" id="registerPasswordInputID1" name="register-pass-input-1" aria-describedby="passwordHelp" required>
                                 <div id="passwordHelp" class="form-text">Please min 6-max 10 characters.</div>
 
                             </div>
 
                             <div class="mb-3">
                                 <label for="registerPasswordInputID2Label" class="form-label"> Confirm Password*</label>
-                                <input type="password" class="form-control" id="registerPasswordInputID2" aria-describedby="passwordHelp" required>
+                                <input type="password" class="form-control" id="registerPasswordInputID2" name="register-pass-input-2" aria-describedby="passwordHelp" required>
                                 <div id="passwordHelp" class="form-text">Please min 6-max 10 characters.</div>
 
                             </div>

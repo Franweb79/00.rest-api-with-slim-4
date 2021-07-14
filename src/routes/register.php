@@ -16,7 +16,7 @@
 
     $app->get('/register', function ($request, $response, $args) {
 
-        echo "hi";
+        session_start();
         $renderer = new PhpRenderer('../templates');
 
         return $renderer->render($response, "register-form-view.php", $args);
