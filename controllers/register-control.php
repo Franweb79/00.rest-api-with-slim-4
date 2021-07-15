@@ -26,14 +26,18 @@
             check if passowrd field and confirm password are the same.
         */
 
-       if( $data["register-pass-input-1"] === $data["register-pass-input-2"]){
+       if( $data["password"] === $data["register-pass-input-2-name"]){
 
         //validate everything here, and hash the password, remove this coment later
 
             
             $v = new Valitron\Validator($data);
 
-            $v->rule('email', 'register-email-input-name');
+            
+            //first param is the rule name, second is the paran "name" as described on the form
+
+            $v->rule('email', 'email');
+            $v->rule('lengthBetween', 'password',6,10);
 
             
             if($v->validate()) {
@@ -41,11 +45,18 @@
             } else {
                 // Errors
                 print_r($v->errors());
+
+               //echo $v->errors();
+
+            
+                
+                $_SESSION['errors-array-for-alerts']=$v->errors();
+                return $response->withHeader('Location', './register');
             }
 
        }else{
 
-            $_SESSION['pass-fields-not-equal']="yes";
+            $_SESSION['errors-array-for-alerts']="Password fields don´t match";
 
             return $response->withHeader('Location', './register');
 
