@@ -1,31 +1,21 @@
-# <h1> THIS IS A SIMPLE REST API BUILT WITH SLIM 4 FRAMEWORK </h1>
+<h2> <b>THIS IS A SIMPLE REST API BUILT WITH SLIM 4 FRAMEWORK</b> </h2>
 
-# <ul>
-
-#    <li>on .gitignore we will ignore 
-
-#           <ul>
-#               <li>docs (private guides) </li>
-
-#               <li>vendor cause it will make sync much bigger. If you have to use this REST API you should    install all the libraries and packages specified on composer.json with the command composer install once composer is installed on your equip. https://getcomposer.org/ </li>
-
-#           </ul>
-#
-#
-#   </li> 
-
-# </ul>
-#   
-
-# <ul><li> possibilty of make a request through software like postman.</li></ul>
-
-#    params names to be used (under construction)
-
-#           <ul>
-#              <li></li>
-#              <li></li>
-#              <li></li>
-#              <li></li>
-#           </ul>
-#   LOGIN FORM: Validation on well formed email and so maybe is not needed on the login form, like it is on the register form, #   since simply cheking if they exist on the DB could be enough; but I think is a good idea to practice and maybe is great to #   save queries to the database. I mean, only the needed queries will be done.
+<ol>
+<li>on .gitignore we will ignore the following folders
+<ul>
+<li>docs -  because are guides or notes only interesting for a personal use </li>
+<li>vendor - because it would make sync much bigger. All those files can be downloaded and installes again through the command <i>"composer install"</i>,  once composer is installed on your equip. for more info please check <a href="https://getcomposer.org/">https://getcomposer.org/</a></li>
+</ul>
+</li> 
+<li><b> possibility of making a request through software like postman.</b>
+<ul>
+<li><b>params names</b> to be used (under construction):</li>
+<ul>
+<li></li>
+</ul>
+</ul>
+</li>
+ 
+</ol>
+   
 # all rights reserved
