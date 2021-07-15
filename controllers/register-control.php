@@ -28,7 +28,7 @@
 
        if( $data["register-pass-input-1"] === $data["register-pass-input-2"]){
 
-        //validate everything here, and hash the password
+        //validate everything here, and hash the password, remove this coment later
 
             
             $v = new Valitron\Validator($data);
