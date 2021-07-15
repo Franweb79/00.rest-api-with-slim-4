@@ -56,7 +56,15 @@
 
        }else{
 
-            $_SESSION['errors-array-for-alerts']="Password fields don´t match";
+
+            /* 
+
+                since v->errors() returns ar array of arrays, if we want to use the same code
+                to control and show alerts with erros, we must pass here 
+                an array of arrays to emulate what v->errors() make
+            */
+            
+            $_SESSION['errors-array-for-alerts']=array(array("Password fields don´t match"));
 
             return $response->withHeader('Location', './register');
 
