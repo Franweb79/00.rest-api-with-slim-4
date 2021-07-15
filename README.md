@@ -1,12 +1,21 @@
 # <h1> THIS IS A SIMPLE REST API BUILT WITH SLIM 4 FRAMEWORK </h1>
 
-# <ul><li>on .gitignore we will ignore </li> </ul>
-#   <ul>
-#       <li>docs (private guides) </li>
+# <ul>
 
-#       <li>vendor cause it will make sync much bigger. If you have to use this REST API you should    install all the libraries and packages specified on composer.json with the command composer install once composer is installed on your equip. https://getcomposer.org/ </li>
+#    <li>on .gitignore we will ignore 
 
-#   </ul>
+#           <ul>
+#               <li>docs (private guides) </li>
+
+#               <li>vendor cause it will make sync much bigger. If you have to use this REST API you should    install all the libraries and packages specified on composer.json with the command composer install once composer is installed on your equip. https://getcomposer.org/ </li>
+
+#           </ul>
+#
+#
+#   </li> 
+
+# </ul>
+#   
 
 # <ul><li> possibilty of make a request through software like postman.</li></ul>
 
