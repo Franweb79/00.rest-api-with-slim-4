@@ -1,13 +1,14 @@
-# 
-# this branch will be used to create a more secure way to store session on cookies, with a session token
+# <h1> THIS IS A SIMPLE REST API BUILT WITH SLIM 4 FRAMEWORK </h1>
 
-# on .gitignore we will ignore 
+# <ul><li>on .gitignore we will ignore </li> </ul>
+#   <ul>
+#       <li>docs (private guides) </li>
 
-# -docs (private guides) 
+#       <li>vendor cause it will make sync much bigger. If you have to use this REST API you should    install all the libraries and packages specified on composer.json with the command composer install once composer is installed on your equip. https://getcomposer.org/ </li>
 
-# -vendor cause it will make sync much bigger. If you have to use this REST API you should install all the libraries and packages specified on composer.json with the command composer install once composer is installed on your equip. https://getcomposer.org/
+#   </ul>
 
-# possibilty of make a request through software like postman.
+# <ul><li> possibilty of make a request through software like postman.</li></ul>
 
 #    params names to be used (under construction)
 
