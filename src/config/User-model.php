@@ -2,6 +2,12 @@
 
     //require 'db-connection-dev.php'; no needed, it will be called on the index.php
 
+    /*TODO write correct comemnts of each method with @param and @return and so, like on java
+
+    http://www.drjava.org/docs/user/ch10.html
+
+    */
+
 
     class User{
 
@@ -10,7 +16,19 @@
         private $user_email;
         private $user_password;
 
-        /*to check if user is on db or not*/
+        /*
+        
+            to check if user is on db or not
+
+            @param $user_email provided by login form
+            @param $user_password provided by login form
+
+            @return a response which can be :- null if no users with such params returned
+                                             - data of the user if exists
+                                             - an error message if exception is thrown
+        
+        
+        */
 
         public function userLogin($user_email,$user_password){
 
@@ -34,26 +52,17 @@
                  $sth->execute( array(':usermail' => $user_email, ':userpass' => $user_password) ) ;
 
               
-                 /*fetchAll() dives us an array, we set as an associate array, and store it on a variable*/
+                 /*fetchAll() gives us an array, we set as an associate array, and store it on a variable*/
                
-                $users=$sth->fetchAll(PDO::FETCH_ASSOC);
-
-               //var_dump($users);
-
-               // var_dump($user_email ."". $user_password);
-
-                //var_dump($users);
-
+                $users=$sth->fetchAll(PDO::FETCH_ASSOC);      
              
 
-                /*if the resulting array is not empty, we attach to the response; if not, response is null*/
                 if(count($users)>0 ){
 
                     $response= $users;
 
                 }else{
 
-                   // $response ='{"message" : "no users with this mail, or pass on our database"}';
 
                     $response=null;
                 }
@@ -65,12 +74,8 @@
                 
 
                 
-                return $response; /*mnaybe with this we store on a slim response later when execiuted, on login-control.php*/
+                return $response; /*maybe with this we store on a slim response later when execiuted, on login-control.php*/
 
-            
-
-               
-                //var_dump("done");
                
 
             }catch(PDOException $ex){
@@ -96,7 +101,17 @@
 
 
 
-        /*insert token when user is logged in*/
+        /*
+        
+            insert token on db when user is logged in
+
+            @param $p_id_user is the user_id to compare with that field on the db
+
+            @return -the token we have set.
+                    -an error message if exception is thrown
+
+        
+        */
         public function setToken($p_id_user){
 
             $token=$this->createToken();
@@ -121,7 +136,6 @@
 
                  $conObj = null; // clear db object (close the connection)
 
-                 //var_dump("e token dentro de set token es". $token);
 
                  return $token;
 
@@ -133,14 +147,18 @@
 
         }
 
-        /*will get the current session token, if it is !null, we compare $p_cookieToken and retrieved session_token from db
-         and 
-         
-         if it is the same, 
-         
-         we go to the / path logged. 
-         
-         If not the same, also to / we destrying session, an error message and show login form
+        /*
+        
+            will get the current session token.
+            if it is !null, we compare $p_cookieToken and retrieved session_token from db
+            and if it is the same,  we go to the / path with user logged in. 
+            If not the same, also to / but no logged user, with an error message and showing login form
+
+            @param $p_cookieToken the token we have stored on a cookie 
+
+            @return a response with: -an error if something on session has been manipulated
+                                     -the user with session token value which is the same of the cookie token value
+                                     -an error message if exception is thrown
 
         */
         public function checkUserSessionWithCookieToken($p_cookieToken){
@@ -185,6 +203,18 @@
                 return "{'errormessage': . '$ex'}";
 
             }
+
+        }
+
+        /*
+            will be used on register-control.php
+            to insert user if all register form data is valid
+
+            @param p_userData contains the valid user data we will insert
+
+
+        */
+        public function insertUser($p_userData){
 
         }
     }
