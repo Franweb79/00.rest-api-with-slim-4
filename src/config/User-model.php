@@ -2,9 +2,11 @@
 
     //require 'db-connection-dev.php'; no needed, it will be called on the index.php
 
-    /*TODO write correct comemnts of each method with @param and @return and so, like on java
+    /*
+    
+        I will write correct comments of each method with @param and @return and so, like on java
 
-    http://www.drjava.org/docs/user/ch10.html
+        http://www.drjava.org/docs/user/ch10.html
 
     */
 
@@ -210,11 +212,79 @@
             will be used on register-control.php
             to insert user if all register form data is valid
 
-            @param p_userData contains the valid user data we will insert
+            @param p_registerFormData is an array which contains the valid user data we will insert.
+                    WARNING: the password field will be hashed before inserting
 
 
         */
-        public function insertUser($p_userData){
+        public function insertUser($p_registerFormData){
+
+          //  array(4) { ["name"]=> string(7) "fffffff" ["email"]=> string(21) "prietofranc@gmail.com" ["password"]=> string(6) "123456" ["register-pass-input-2-name"]=> string(6) "123456" } 
+
+           $sql="INSERT INTO users (user_name, user_email, user_password, session_token)
+            VALUES (:p_user_name, :p_user_email, :p_user_password, NULL);";
+
+            try{
+
+                
+                
+                $p_passToBeHashed=$this->hashPassword($p_registerFormData["password"]);
+
+                var_dump($p_passToBeHashed);
+                die();
+
+                //TODO NEXT-> follow coding this, insert the hashed password on execute array and so
+
+                $conObj=new Connection();
+
+                $conn=$conObj->connect();
+
+                $sth =$conn->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+
+                 /*execute is for prepared sentence*/
+                $sth->execute( array(':p_user_name' => $p_registerFormData["name"]),
+                               array(':p_user_email' => $p_registerFormData["email"]),
+
+                //TODO follow data, we will create first a method to hash the pass and that will be the one we insert on db
+                
+                             ) ;
+
+
+
+            }catch(PDOException $ex){
+
+                return "{'errormessage': . '$ex'}";
+
+            }
+
+        }
+
+        /*
+            will hash the password before inserting it on database, on the insertUser method
+
+            @param $p_passToBeHashed 
+            @return -the hashed password
+                    - an exception is something went wrong. In this case is an exception type, 
+                    not a PDOException type like when we work with PDO statements
+
+
+        */
+
+        public function hashPassword($p_passToBeHashed){
+
+            try{
+
+                $hashedPass=md5($p_passToBeHashed);
+
+                return $hashedPass;
+
+            }catch(exception $ex){
+
+                return "{'errormessage': . '$ex'}";
+
+            }
+
+
 
         }
     }

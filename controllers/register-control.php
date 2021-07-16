@@ -28,12 +28,12 @@
 
        if( $data["password"] === $data["register-pass-input-2-name"]){
 
-        //validate everything here, and hash the password, remove this coment later
+        //validate everything here
 
             
             $v = new Valitron\Validator($data);
 
-            
+          
             //first param is the rule name, second is the paran "name" as described on the form
 
 
@@ -47,6 +47,12 @@
             if($v->validate()) {
 
                 //insert user on database with a method
+
+                $userObject=new User();
+
+                $userObject->insertUser($data);
+
+
                 echo "Yay! We're all good!";
             } else {
                 // Errors
