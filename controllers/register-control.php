@@ -36,11 +36,17 @@
             
             //first param is the rule name, second is the paran "name" as described on the form
 
+
+            $v->rule('lengthBetween', 'name',3,10);
+            $v->rule('alpha', 'name');
+
             $v->rule('email', 'email');
             $v->rule('lengthBetween', 'password',6,10);
 
             
             if($v->validate()) {
+
+                //insert user on database with a method
                 echo "Yay! We're all good!";
             } else {
                 // Errors

@@ -75,8 +75,8 @@
                             </div>
                             <div class="mb-3">
                                 <label for="registerNameInputIDLabel" class="form-label">Name:</label>
-                                <input type="text" class="form-control" id="registerNameInputID" name="register-name-input-name" aria-describedby="nameHelp" required>
-                                <div id="nameHelp" class="form-text">Min 3 - max 10 characters. Only letters and whitespaces allowed</div>
+                                <input type="text" class="form-control" id="registerNameInputID" name="name" aria-describedby="nameHelp" required>
+                                <div id="nameHelp" class="form-text">Min 3 - max 10 characters. Only letters allowed. No whitespaces, symbols or numbers</div>
                             </div>
                             <div class="mb-3">
                                 <label for="registerNameInputIDLabel" class="form-label">Email address*</label>
