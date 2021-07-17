@@ -52,6 +52,8 @@
 
                 $userObject->insertUser($data);
 
+                //TODO make a redirection to login and ask to login on an alert
+
 
                 echo "Yay! We're all good!";
             } else {

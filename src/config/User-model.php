@@ -230,10 +230,8 @@
                 
                 $p_passToBeHashed=$this->hashPassword($p_registerFormData["password"]);
 
-                var_dump($p_passToBeHashed);
-                die();
+               
 
-                //TODO NEXT-> follow coding this, insert the hashed password on execute array and so
 
                 $conObj=new Connection();
 
@@ -242,12 +240,14 @@
                 $sth =$conn->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
 
                  /*execute is for prepared sentence*/
-                $sth->execute( array(':p_user_name' => $p_registerFormData["name"]),
-                               array(':p_user_email' => $p_registerFormData["email"]),
+                $sth->execute( array(':p_user_name' => $p_registerFormData["name"],
+                               ':p_user_email' => $p_registerFormData["email"],
+                               ':p_user_password' => $p_passToBeHashed )
 
-                //TODO follow data, we will create first a method to hash the pass and that will be the one we insert on db
+                
                 
                              ) ;
+
 
 
 
