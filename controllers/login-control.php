@@ -71,15 +71,16 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
 
         $_SESSION['is_user_logged']=true;
         $_SESSION['valid_user']="yes";
-        $_SESSION['alert']="alert-info-user-logged-in-user-logged-in";
+        $_SESSION['message-to-display-on-alert']="Welcome";
 
-       $jencoded=json_encode($responseFromLogIn);
+
+        $jencoded=json_encode($responseFromLogIn);
 
        
 
      
         
-        $response->getBody()->write($jencoded);
+          $response->getBody()->write($jencoded);
 
     
       
@@ -152,7 +153,8 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
 
         $_SESSION['is_user_logged']=true;
         $_SESSION['valid_user']="yes";
-        $_SESSION['alert']="alert-info-user-logged-in";
+        $_SESSION['message-to-display-on-alert']="Welcome";
+
 
 
         
@@ -167,7 +169,7 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
       }/*else {
         //if $responseFromLogIn is not null, to the /, cause session or user is not valid
 
-         // TODO MUST BE A RETURN REPSONSE HERE IF NO CORRECT USER
+         // TODO MUST BE A RETURN REPSONSE HERE IF NO CORRECT USER (foe example, valid email but no correct pass)
 
         
         //SEND A FLAG OR A SESSION VAR OR SOMETHING TO TELL USER OR PASS IS WRONG, not invalid formed but wrong

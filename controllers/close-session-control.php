@@ -34,7 +34,8 @@
          
             
 
-            $_SESSION['alert']="alert-primary-close-session";
+            $_SESSION['message-to-display-on-alert']="Closed session";
+
            
             
 

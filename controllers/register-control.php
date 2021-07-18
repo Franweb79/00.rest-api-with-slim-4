@@ -52,7 +52,6 @@
 
                 $userObject->insertUser($data);
 
-                $_SESSION['alert']="alert-success";
 
                 $_SESSION['message-to-display-on-alert']="succesfully registered. please login";
 

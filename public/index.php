@@ -51,7 +51,10 @@
 
     require '../controllers/close-session-control.php';
 
+    //TODO this jquery call maybe should be done another way because when I call for example get-all-items it is attached to the Response
+
 ?>
+    
     <script
 			  src="https://code.jquery.com/jquery-3.6.0.min.js"
 			  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -220,19 +223,19 @@
             having to render the template or destrying session on each condition, but now as I still don´t
             know if in future conditions with alerts I have to do the same, I let it so
 
-            
+            'message-to-display-on-alert'
 
         */
 
-        if (isset($_SESSION['alert'])){
+        if (isset($_SESSION['message-to-display-on-alert'])){
 
-            if($_SESSION['alert']=="alert-danger"){
+            if( $_SESSION['message-to-display-on-alert']==" WRONG LOGIN, INVALID FORMED EMAIL"){
 
                     
         
                 ?>
-                    <div class="alert <?php echo $_SESSION['alert'] ?> " role="alert">
-                            WRONG LOGIN, INVALID FORMED EMAIL
+                    <div class="alert alert-danger " role="alert">
+                        <?php echo $_SESSION['message-to-display-on-alert']; ?>
                     </div>
                     
                 <?php
@@ -244,13 +247,13 @@
                         return $renderer->render($response, "small-login.php", $args); 
             }
 
-            if($_SESSION['alert']=="alert-primary-close-session"){
+            if($_SESSION['message-to-display-on-alert']=="Closed session"){
 
               
         
                 ?>
-                    <div class="alert <?php echo $_SESSION['alert'] ?> " role="alert">
-                         closed session
+                    <div class="alert alert-info" role="alert">
+                        <?php echo $_SESSION['message-to-display-on-alert']; ?>
                     </div>
                     
                 <?php
@@ -265,11 +268,11 @@
 
             }
 
-            if($_SESSION['alert']=="alert-success"){
+            if($_SESSION['message-to-display-on-alert']=="succesfully registered. please login"){
 
                 ?>
-                    <div class="alert <?php echo $_SESSION['alert'] ?> " role="alert">
-                          <?php echo $_SESSION['message-to-display']; ?>
+                    <div class="alert alert-success" role="alert">
+                        <?php echo $_SESSION['message-to-display-on-alert']; ?>
                     </div>
 
                 <?php
@@ -293,7 +296,8 @@
                 //TODO maybe when I finish I can use this lines to refactor the code and avoid them on each condition
                 session_destroy();
            
-                unset($_SESSION['alert']);
+               
+                
 
                 unset($_SESSION['message-to-display']);
                 
@@ -313,7 +317,7 @@
         if( isset($_SESSION["valid_user"]) && $_SESSION['valid_user']=="yes" ){
         
         
-             if( ( isset($_SESSION['alert']) ) && ( $_SESSION['alert']=="alert-info-user-logged-in" ) ){
+             if( ( isset($_SESSION['message-to-display-on-alert']) ) && ( $_SESSION['message-to-display-on-alert']=="Welcome" ) ){
 
         ?>
 
@@ -322,13 +326,12 @@
                 </div>
         <?php   
         
-        /* MUST DESTROY THE SESSION VARIABLE FOR THE session alert info, TO AVOID FLAG BEING SHOW*/
-                unset($_SESSION['alert']);
+        /* must destroy the session variable to show a message on an alert, to avoid alert being shown again*/
+                unset($_SESSION['message-to-display-on-alert']);
 
 
              }
 
-             //var_dump($_SESSION);
 
              $renderer = new PhpRenderer('../templates');
 
@@ -419,12 +422,4 @@
 
 ?>
 
-<!--<script>
 
-
-
-$( "#test-button" ).click(function( event ) {
-    alert( "pulsado" ); // true
-  });
-</script>
-<script type="text/javascript" src="../src/assets/js/scripts.js"></script>-->

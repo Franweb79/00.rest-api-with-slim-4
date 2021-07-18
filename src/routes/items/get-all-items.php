@@ -35,7 +35,7 @@
     // create GET HTTP request
     $app->get('/get-all-items', function( Request $request, Response $response){
 
-        session_start(); //we need to make thew middleware work correctly, in order to recover the session
+        session_start(); //we need to make the middleware work correctly, in order to recover the session
 
         $sql = "SELECT * FROM items";
 
@@ -58,7 +58,7 @@
             //query
 
             $stmt = $PDOconn->query( $sql );
-            $users = $stmt->fetchAll( PDO::FETCH_OBJ );
+            $items = $stmt->fetchAll( PDO::FETCH_OBJ );
             $dbConnObj = null; // clear db object (close the connection)
 
             /*
@@ -69,7 +69,7 @@
             also to be able to return data as json with the method $response->withHeader()
             
             */
-            $responseJSON_encoded=json_encode( $users );
+            $responseJSON_encoded=json_encode( $items );
 
            
 

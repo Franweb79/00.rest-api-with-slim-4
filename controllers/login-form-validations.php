@@ -47,16 +47,15 @@
             }
         }
          
-       // var_dump ($isAllOK);
-
+      
       if(!$isAllOK){
 
        
 
-       //ECHO "WRONG";
+      
       
        session_start();
-        $_SESSION['alert']="alert-danger";
+       $_SESSION['message-to-display-on-alert']=" WRONG LOGIN, INVALID FORMED EMAIL";
         header( 'Location: ./');
         exit();
         
