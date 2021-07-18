@@ -52,10 +52,13 @@
 
                 $userObject->insertUser($data);
 
-                //TODO make a redirection to login and ask to login on an alert
+                $_SESSION['alert']="alert-success";
 
+                $_SESSION['message-to-display-on-alert']="succesfully registered. please login";
 
-                echo "Yay! We're all good!";
+                return $response->withHeader('Location', './');
+
+                
             } else {
                 // Errors
                 print_r($v->errors());

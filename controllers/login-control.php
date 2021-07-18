@@ -71,7 +71,7 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
 
         $_SESSION['is_user_logged']=true;
         $_SESSION['valid_user']="yes";
-        $_SESSION['alert']="alert-info";
+        $_SESSION['alert']="alert-info-user-logged-in-user-logged-in";
 
        $jencoded=json_encode($responseFromLogIn);
 
@@ -152,7 +152,7 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
 
         $_SESSION['is_user_logged']=true;
         $_SESSION['valid_user']="yes";
-        $_SESSION['alert']="alert-info";
+        $_SESSION['alert']="alert-info-user-logged-in";
 
 
         

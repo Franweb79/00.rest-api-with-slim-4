@@ -33,13 +33,10 @@
             }
          
             
-            //session_destroy();
 
-            $_SESSION['alert']="alert-primary";
+            $_SESSION['alert']="alert-primary-close-session";
            
-            var_dump( $_SESSION['alert']);
-
-            var_dump($response);
+            
 
             
 

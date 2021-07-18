@@ -1,6 +1,6 @@
 
 
-   
+   <?php //TODO this file must be deleted ?>
 <!DOCTYPE HTML>  
     <html>
     <head>

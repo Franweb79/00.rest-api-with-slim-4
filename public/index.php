@@ -214,48 +214,90 @@
 
         }
 
+        /*
+        
+            TODO maybe when I finish i can refactor this following code for the alerts and not
+            having to render the template or destrying session on each condition, but now as I still don´t
+            know if in future conditions with alerts I have to do the same, I let it so
+
+            
+
+        */
+
         if (isset($_SESSION['alert'])){
 
             if($_SESSION['alert']=="alert-danger"){
 
-                        session_destroy();
+                    
         
                 ?>
-                        <div class="alert <?php echo $_SESSION['alert'] ?> " role="alert">
+                    <div class="alert <?php echo $_SESSION['alert'] ?> " role="alert">
                             WRONG LOGIN, INVALID FORMED EMAIL
-                        </div>
+                    </div>
                     
                 <?php
         
-                       
+                    session_destroy();   
 
                         $renderer = new PhpRenderer('../templates');
 
                         return $renderer->render($response, "small-login.php", $args); 
             }
 
-            if($_SESSION['alert']=="alert-primary"){
+            if($_SESSION['alert']=="alert-primary-close-session"){
 
               
         
                 ?>
-                        <div class="alert <?php echo $_SESSION['alert'] ?> " role="alert">
-                           closed session
-                        </div>
+                    <div class="alert <?php echo $_SESSION['alert'] ?> " role="alert">
+                         closed session
+                    </div>
                     
                 <?php
         
-                        session_destroy();
+                     session_destroy();
 
-                        $renderer = new PhpRenderer('../templates');
+                    $renderer = new PhpRenderer('../templates');
 
-                        return $renderer->render($response, "small-login.php", $args); 
+                    return $renderer->render($response, "small-login.php", $args); 
 
 
 
             }
 
-            unset($_SESSION['alert']);
+            if($_SESSION['alert']=="alert-success"){
+
+                ?>
+                    <div class="alert <?php echo $_SESSION['alert'] ?> " role="alert">
+                          <?php echo $_SESSION['message-to-display']; ?>
+                    </div>
+
+                <?php
+
+                    session_destroy();
+
+                    $renderer = new PhpRenderer('../templates');
+
+                    return $renderer->render($response, "small-login.php", $args); 
+
+                
+            }
+
+           
+
+           
+
+            
+
+           /* 
+                //TODO maybe when I finish I can use this lines to refactor the code and avoid them on each condition
+                session_destroy();
+           
+                unset($_SESSION['alert']);
+
+                unset($_SESSION['message-to-display']);
+                
+            */
 
         }
             
@@ -271,11 +313,11 @@
         if( isset($_SESSION["valid_user"]) && $_SESSION['valid_user']=="yes" ){
         
         
-             if( ( isset($_SESSION['alert']) ) && ( $_SESSION['alert']=="alert-info" ) ){
+             if( ( isset($_SESSION['alert']) ) && ( $_SESSION['alert']=="alert-info-user-logged-in" ) ){
 
         ?>
 
-                <div class="alert <?php echo $_SESSION['alert'] ?> " role="alert">
+                <div class="alert alert-info " role="alert">
                    welcome <?php echo $_SESSION['user_name'] ?>
                 </div>
         <?php   

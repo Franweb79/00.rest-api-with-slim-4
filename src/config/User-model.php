@@ -210,7 +210,9 @@
 
         /*
             will be used on register-control.php
-            to insert user if all register form data is valid
+            to insert user if all register form data is valid.
+            The redirection when user is succesfully registered or not must be done later on register.control-php, because
+            a method should do only what it says it does (inserting an user)
 
             @param p_registerFormData is an array which contains the valid user data we will insert.
                     WARNING: the password field will be hashed before inserting
