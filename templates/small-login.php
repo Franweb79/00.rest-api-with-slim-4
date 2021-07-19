@@ -83,7 +83,7 @@
             
             </div>
 
-            <?php /*relative path as from index.php, from where this view will be called*/ ?>
+            <?php /*relative path as from index.php, from where this view will be called */ ?>
             
 
            
