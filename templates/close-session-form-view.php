@@ -12,5 +12,3 @@
     <input type="submit" class="btn btn-primary" value="Close session">
 
 </form>
-
-<button type="button" id="test-button">Click Me!</button> 

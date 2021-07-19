@@ -24,18 +24,18 @@
 
        /*
             check if passowrd field and confirm password are the same.
+            //TODO this can be done with  valitron, that way we could show this error also with the others.
+            Now tisd password fields dowsnt match it shows only that error and not the rest despite there are more
         */
 
-       if( $data["password"] === $data["register-pass-input-2-name"]){
-
-        //validate everything here
+       
 
             
             $v = new Valitron\Validator($data);
 
           
             //first param is the rule name, second is the paran "name" as described on the form
-
+            $v->rule('equals', 'password', 'confirm Password');
 
             $v->rule('lengthBetween', 'name',3,10);
             $v->rule('alpha', 'name');
@@ -69,25 +69,6 @@
                 $_SESSION['errors-array-for-alerts']=$v->errors();
                 return $response->withHeader('Location', './register');
             }
-
-       }else{
-
-
-            /* 
-
-                since v->errors() returns ar array of arrays, if we want to use the same code
-                to control and show alerts with erros, we must pass here 
-                an array of arrays to emulate what v->errors() make
-            */
-            
-            $_SESSION['errors-array-for-alerts']=array(array("Password fields don´t match"));
-
-            return $response->withHeader('Location', './register');
-
-       }
-
-      
-
 
        
 
