@@ -96,7 +96,7 @@
                     As  $_SESSION['errors-for-alerts'] is an array of arrays which will be iterated on register-for-view,
                     we set the message as an array of arrays because that way code on view  is more reusable
                     */
-                $_SESSION['errors-for-alerts']=array(array("that user already exists on our database"));
+                $_SESSION['errors-for-alerts']=array(array("One user with that email already exists on our database, please check another"));
 
                
                 return $response->withHeader('Location', './register');
