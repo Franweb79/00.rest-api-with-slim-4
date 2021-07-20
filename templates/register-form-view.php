@@ -19,7 +19,7 @@
 
 
 
-                        if(isset ($_SESSION['errors-array-for-alerts']) ){
+                        if(isset ($_SESSION['errors-for-alerts']) ){
 
                            
                 ?>
@@ -37,7 +37,7 @@
                                     */
                                 
                                 
-                                    foreach($_SESSION['errors-array-for-alerts'] as $arrayValueWithEachSingleError){
+                                    foreach($_SESSION['errors-for-alerts'] as $arrayValueWithEachSingleError){
 
                                         foreach ($arrayValueWithEachSingleError as $key => $value )
                                         {
@@ -97,7 +97,7 @@
 
                             <div class="mb-3">
                                 <label for="registerPasswordInputID2Label" class="form-label"> Confirm Password*</label>
-                                <input type="password" class="form-control" id="registerPasswordInputID2" name="confirm Password" aria-describedby="passwordHelp" required>
+                                <input type="password" class="form-control" id="registerPasswordInputID2" name="confirm_Password" aria-describedby="passwordHelp" required>
                                 <div id="passwordHelp" class="form-text">Please min 6-max 10 characters.</div>
 
                             </div>

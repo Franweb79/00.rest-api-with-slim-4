@@ -18,57 +18,93 @@
 
        
 
-       session_start();
+            session_start();
 
-       $data=$request->getParsedBody();
+            $data=$request->getParsedBody();
 
-       /*
-            check if passowrd field and confirm password are the same.
-            //TODO this can be done with  valitron, that way we could show this error also with the others.
-            Now tisd password fields dowsnt match it shows only that error and not the rest despite there are more
-        */
+             /*
+                check if email trying to be registered exists on database.
+            */
 
-       
+            $emailExists=NULL;
 
-            
-            $v = new Valitron\Validator($data);
+            $userObject=new User();
 
-          
-            //first param is the rule name, second is the paran "name" as described on the form
-            $v->rule('equals', 'password', 'confirm Password');
-
-            $v->rule('lengthBetween', 'name',3,10);
-            $v->rule('alpha', 'name');
-
-            $v->rule('email', 'email');
-            $v->rule('lengthBetween', 'password',6,10);
+            $emailExists= $userObject->checkIfEmailExists($data['email']);
 
             
-            if($v->validate()) {
 
-                //insert user on database with a method
-
-                $userObject=new User();
-
-                $userObject->insertUser($data);
-
-
-                $_SESSION['message-to-display-on-alert']="succesfully registered. please login";
-
-                return $response->withHeader('Location', './');
+            if($emailExists == NULL){
 
                 
-            } else {
-                // Errors
-                print_r($v->errors());
+     
+                $v = new Valitron\Validator($data);
 
-               //echo $v->errors();
+              
 
             
+                //first param is the rule name, second is the paran "name" as described on the form
+                $v->rule('equals', 'password', 'confirm_Password');
+
+                $v->rule('lengthBetween', 'name',3,10);
+                $v->rule('alpha', 'name');
+
+                $v->rule('email', 'email');
+                $v->rule('lengthBetween', 'password',6,10);
+
                 
-                $_SESSION['errors-array-for-alerts']=$v->errors();
-                return $response->withHeader('Location', './register');
+                if($v->validate()) {
+
+                    /*
+                    
+                        insert user on database with a method.
+                        As the prior connection to check if e mail exists will be closed on that method, we open another
+                    */
+
+                  
+                
+
+                    $userObject->insertUser($data);
+
+
+                    $_SESSION['message-to-display-on-alert']="succesfully registered. please login";
+
+                    return $response->withHeader('Location', './');
+
+                
+                } else {
+                    // Errors
+                    print_r($v->errors());
+
+                    //echo $v->errors();
+
+                
+                
+                    $_SESSION['errors-for-alerts']=$v->errors();
+                    return $response->withHeader('Location', './register');
             }
+
+
+
+            }else{
+
+                /*
+
+                    we dont specify on message which field is used to check  if user exists or nor, 
+                    it is mopre secure to prevent attacks not giving clues.
+
+                    As  $_SESSION['errors-for-alerts'] is an array of arrays which will be iterated on register-for-view,
+                    we set the message as an array of arrays because that way code on view  is more reusable
+                    */
+                $_SESSION['errors-for-alerts']=array(array("that user already exists on our database"));
+
+               
+                return $response->withHeader('Location', './register');
+
+            }
+
+            
+
 
        
 

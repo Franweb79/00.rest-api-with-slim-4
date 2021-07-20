@@ -10,6 +10,8 @@
 
     */
 
+    //TODO check IF CLOSED ALL CONNECTION ON METHODS
+
 
     class User{
 
@@ -180,7 +182,7 @@
 
                  $users=$sth->fetchAll(PDO::FETCH_ASSOC);
 
-                 /* if the resulting array is not empty, we attach to the response; if not, response is null; if not, a gven message on json string literal format*/
+                 /* if the resulting array is not empty, we attach to the response; if not, a gven message on json string literal format*/
                 if(count($users)>0 ){
 
                     $response= $users;
@@ -251,7 +253,7 @@
                              ) ;
 
 
-
+                $conObj = null; // clear db object (close the connection)
 
             }catch(PDOException $ex){
 
@@ -288,6 +290,64 @@
 
 
 
+        }
+
+        /*
+
+            on register-control
+            .php, this will check if email given as parameter exists on database. So, if user with such mail exists
+
+            @param the new user email we are trying to register
+
+            @return NULL or not
+            
+        */
+        public function checkIfEmailExists($p_user_to_register_email){
+
+            $sql="SELECT user_email from users where (user_email = :user_email)";
+
+
+            try{
+
+
+                $conObj=new Connection();
+
+                $conn=$conObj->connect();
+
+                $sth =$conn->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+
+                 /*execute is for prepared sentence*/
+                 $sth->execute( array(':user_email' => $p_user_to_register_email) ) ;
+
+                 $users=$sth->fetchAll(PDO::FETCH_ASSOC);
+
+                
+
+                 /* 
+                 
+                    if the resulting array is not empty, we attach to the response; if not, response is null
+                 
+                 */
+                if(count($users)>0 ){
+
+                    $response= $users;
+
+                }else{
+
+                   $response = NULL;
+
+                   
+                }
+
+                $conObj = null; // clear db object (close the connection)
+
+                return $response;
+
+
+            }catch(PDOException $ex)
+            {
+                return "{'errormessage': . '$ex'}";
+            }
         }
     }
 
