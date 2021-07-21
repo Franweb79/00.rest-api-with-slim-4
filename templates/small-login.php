@@ -59,8 +59,8 @@
                                     <label class="control-label sr-only"></label>
                                     <div class="login-input">
                                         <input id="loginPasswordInputID" name="loginPassName" type="password" class="form-control" placeholder="******"  required>
-                                        <div class="login-icon"><i class="fa fa-lock"></i></div>
-                                        <div class="eye-icon"><i class="fa fa-eye"></i></div>
+                                        <div class="login-icon"><i class="fa fa-lock" ></i></div>
+                                        <div class="eye-icon"><button id="eye-icon"><i class="fa fa-eye" ></i></button></div>
                                     </div>
                                 </div>
                             </div>
