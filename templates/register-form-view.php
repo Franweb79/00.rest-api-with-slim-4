@@ -180,7 +180,7 @@
             
             </div>
   
-            <script src="js/my-scripts-register.js" type="text/javascript"></script>
+            <script src="js/my-scripts.js" type="text/javascript"></script>
        
         </body>
     </html>
