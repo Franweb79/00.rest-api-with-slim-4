@@ -220,6 +220,8 @@
             having to render the template or destrying session on each condition, but problem is the flag color 
             is different on many cases so we should make conditions anyway. at the moment i let it so
 
+            but i think template show and session destroy can be at the end, check what can be outside
+
            
 
         */
