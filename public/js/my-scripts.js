@@ -1,4 +1,3 @@
-//alert("test js");
 
 var isHidden=true; //when we load the script is always hidden
 
@@ -44,8 +43,5 @@ $( "#eye-icon" ).click(( event )=> {
     }
 
    
-
-
-    console.log ("la variable es"+isHidden);
 
   }
