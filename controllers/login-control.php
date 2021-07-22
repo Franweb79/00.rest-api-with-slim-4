@@ -59,7 +59,11 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
       
 
     
-/*if we have an user, we start session like after regular userLogin method*/
+    /*
+    
+        if we have an user with that cookie token, we start session like after regular userLogin method
+    
+    */
       if(count($responseFromLogIn)>0){
 
         session_start();
@@ -111,10 +115,18 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
 
      
       
-      /*if there is an user with such email and password ($responseFromLogIn is not null), 
-      we 1-store everything on a session, 
-         2-create a cookie if "remember" is clicked, 
-         3-and redirect to ./ */
+      /*
+      
+        if there is an user with such email and password ($responseFromLogIn is not null), 
+        we 1-store everything on a session, 
+          2-create a cookie if "remember" is clicked, 
+          3-and redirect to ./
+          
+        else (if no user with such memail and/or pass)
+          1-send message for an alert
+          3-redirect to ./
+         
+      */
 
       if($responseFromLogIn != null){
 
@@ -122,14 +134,16 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
         
         session_start();
 
-        /*we set the token for this session. we still dont have the id_user on $_SESSION so
-        we take it with $responseFromLogIn[0]["id_user"]
+        /*
+        
+          we set the token for this session. we still dont have the id_user on $_SESSION so
+          we take it with $responseFromLogIn[0]["id_user"]
 
-        also to be sure we obtain the same token we have inserted on set token and store it to the session, we overwrite the token
-        obtained on the userLogin query 
+          also to be sure we obtain the same token we have inserted on set token and store it to the session, we overwrite the token
+          obtained on the userLogin query 
 
-        that is because we have done the query to retrieve all user data before, and the token we have on the responseFronLogin is different,
-        it is the prior token
+          that is because we have done the query to retrieve all user data before, and the token we have on the responseFronLogin is different,
+          it is the prior token
 
           */
         $responseFromLogIn[0]['session_token']=$userObject->setToken($responseFromLogIn[0]["id_user"]);
@@ -166,16 +180,18 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
 
         
 
-      }/*else {
+      }else {
         //if $responseFromLogIn is not null, to the /, cause session or user is not valid
 
          // TODO MUST BE A RETURN REPSONSE HERE IF NO CORRECT USER (foe example, valid email but no correct pass)
 
-        
+         session_start();
         //SEND A FLAG OR A SESSION VAR OR SOMETHING TO TELL USER OR PASS IS WRONG, not invalid formed but wrong
 
+        $_SESSION['message-to-display-on-alert']="Email or password incorrect, please try again";
+
         return $response->withHeader("Location", "./");
-      }*/
+      }
     
     
 });

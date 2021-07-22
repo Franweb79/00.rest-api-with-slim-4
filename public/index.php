@@ -217,14 +217,19 @@
         /*
         
             TODO maybe when I finish i can refactor this following code for the alerts and not
-            having to render the template or destrying session on each condition, but now as I still don´t
-            know if in future conditions with alerts I have to do the same, I let it so
+            having to render the template or destrying session on each condition, but problem is the flag color 
+            is different on many cases so we should make conditions anyway. at the moment i let it so
 
-            'message-to-display-on-alert'
+           
 
         */
 
         if (isset($_SESSION['message-to-display-on-alert'])){
+
+        
+
+    
+            
 
             if( $_SESSION['message-to-display-on-alert']==" WRONG LOGIN, INVALID FORMED EMAIL"){
 
@@ -244,7 +249,7 @@
                         return $renderer->render($response, "small-login.php", $args); 
             }
 
-            if($_SESSION['message-to-display-on-alert']=="Closed session"){
+            else if($_SESSION['message-to-display-on-alert']=="Closed session"){
 
               
         
@@ -265,7 +270,7 @@
 
             }
 
-            if($_SESSION['message-to-display-on-alert']=="succesfully registered. please login"){
+            else if($_SESSION['message-to-display-on-alert']=="succesfully registered. please login"){
 
                 ?>
                     <div class="alert alert-success" role="alert">
@@ -282,6 +287,23 @@
 
                 
             }
+            else if($_SESSION['message-to-display-on-alert']=="Email or password incorrect, please try again"){
+
+                ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo $_SESSION['message-to-display-on-alert']; ?>
+                </div>
+
+            <?php
+
+                session_destroy();
+
+                $renderer = new PhpRenderer('../templates');
+
+                return $renderer->render($response, "small-login.php", $args); 
+
+
+            }
 
            
 
@@ -293,10 +315,12 @@
                 //TODO maybe when I finish I can use this lines to refactor the code and avoid them on each condition
                 session_destroy();
            
-               
+            
                 
 
                 unset($_SESSION['message-to-display']);
+
+                   and render template
                 
             */
 
