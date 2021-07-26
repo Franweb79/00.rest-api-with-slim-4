@@ -35,8 +35,9 @@
     //ITEMS ROUTES
 
     require '../src/routes/items/get-all-items.php';
+    require '../src/routes/items/get-item.php';
 
-    //log in and register route
+    //log in and register route, as well as the user class model
 
     require '../src/routes/login.php';
     require '../controllers/login-control.php';

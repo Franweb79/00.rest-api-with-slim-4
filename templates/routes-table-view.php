@@ -32,10 +32,18 @@
                             $url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
                             echo  $url; ?>
 
-                            <a href="<?php echo $url.'get-all-items' ?>" target="_blank"class="list-group-item list-group-item-action list-group-item-light"> GET ITEMS</a>
+                            <a href="<?php echo $url.'get-all-items' ?>" target="_blank"class="list-group-item list-group-item-action list-group-item-light"> GET ALL ITEMS</a>
                             <a href="<?php echo $url ?>" class="list-group-item list-group-item-action list-group-item-light">GET AN ITEM</a>
                             <a href="<?php echo $url ?>" class="list-group-item list-group-item-action list-group-item-light">POST ITEM </a>
                             <br/>
+
+                            <p>Please specify one ID or name of the item you are looking for:</p>
+                            <form method="POST" action="./get-item">
+                                
+                                <input type="text" name="get-item-field-name"/>
+                                <button type="submit">GET-ITEM</button>
+
+                            </form>
                             <?php require '../templates/close-session-form-view.php';  /*will be call from the index so index as if it was so this is the route*/?>
 
                     </div>
