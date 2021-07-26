@@ -189,6 +189,8 @@
 
                 }else{
 
+                    //TODO maybe this must be done as an array to be able to use json_encode(), look how will it be 
+                    //used later, this message, on an alert or as json response
                    $response ='{"message" : "mmm I think that is not possible :/. Your session is wrong"}';
 
                    // $response=null;

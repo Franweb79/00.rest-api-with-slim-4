@@ -38,7 +38,7 @@
                             <br/>
 
                             <p>Please specify one ID or name of the item you are looking for:</p>
-                            <form method="POST" action="./get-item">
+                            <form method="GET" action="./get-item">
                                 
                                 <input type="text" name="get-item-field-name"/>
                                 <button type="submit">GET-ITEM</button>

@@ -35,7 +35,15 @@
     // create GET HTTP request
     $app->get('/get-all-items', function( Request $request, Response $response){
 
-        session_start(); //we need to make the middleware work correctly, in order to recover the session
+        
+        /*
+
+             we need to make the middleware work correctly, in order to recover the session and check 
+             what must be checked on the middleware with $_SESSION and so
+
+        */
+
+        session_start(); 
 
         $sql = "SELECT * FROM items";
 
@@ -90,7 +98,7 @@
 
         }catch(PDOException $ex){
 
-            $responseJSONencoded='{"error": "message":'. $ex->getMessage() . '}';
+            $responseJSONencoded=json_encode( array ("exception"=> $ex->getMessage()) );
             $response->getBody()->write( $responseJSONencoded);
 
            
