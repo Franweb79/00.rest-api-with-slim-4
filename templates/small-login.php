@@ -46,6 +46,8 @@
                     </div><!--col-->
 
                     <div class="col-sm">
+
+                        <h2>LOG IN</h2>
                         <form method="POST" action="./login-control">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
@@ -62,7 +64,7 @@
                                     <div class="login-input">
                                         <input id="loginPasswordInputID" name="loginPassName" type="password" class="form-control" placeholder="******"  required>
                                         <div class="login-icon"><i class="fa fa-lock" ></i></div>
-                                        <div class="eye-icon"><button type="button" id="eye-icon"><i class="fa fa-eye" ></i></button></div>
+                                        <div class="eye-icon"><button type="button" id="eye-icon-id"><i class="fa fa-eye" ></i></button></div>
                                     </div>
                                 </div>
                             </div>

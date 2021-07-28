@@ -1,3 +1,9 @@
+
+/*
+
+  styles for most of the small-login.php and the post-new-item-view.php on the templates folder
+
+*/
 body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-family: 'Roboto Condensed', sans-serif; letter-spacing: 0px; font-size: 16px; color: #848687; font-weight: 400; line-height: 30px; background-color: #f3f5f7; }
 h1, h2, h3, h4, h5, h6 { color: #1c1e1e; margin: 0px 0px 15px 0px; font-weight: 400; font-family: 'Roboto Condensed', sans-serif; }
 h1 { font-size: 30px; line-height: 42px; }
@@ -43,6 +49,7 @@ textarea::-webkit-input-placeholder { color: #a6a7a8 !important; }
 .login-input { position: relative; margin-bottom: -21px; }
 .login-input .form-control { background-color: #f4f7f9; padding-left: 35px; }
 .login-icon { display: inline-block; position: relative; bottom: 51px; left: 18px; font-size: 14px }
+.book-icon { display: inline-block; position: relative; bottom: 51px; left: 18px; font-size: 14px }
 .eye-icon { position: absolute; bottom: 52px; right: 18px; font-size: 14px }
 .btn-social-rectangle, .btn-facebook .btn-twitter .btn-googleplus { font-size: 14px; margin-right: 6px; display: inline-block; line-height: 1.2; padding: 14px 16px; margin-bottom: 10px; border-radius: 3px; }
 .social-text { font-size: 14px; text-transform: uppercase; padding-left: 6px; letter-spacing: 1px; }
@@ -67,7 +74,7 @@ textarea::-webkit-input-placeholder { color: #a6a7a8 !important; }
 .feature-left .feature-content { padding-top: 8px; padding-left: 70px; padding-bottom: 20px; }
 
 
-#eye-icon{
+#eye-icon-id{
 
   border:none;
   background-color: transparent;

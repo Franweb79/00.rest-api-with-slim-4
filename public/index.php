@@ -1,6 +1,8 @@
 
 
 <?php
+
+//TODO maybe we can refactor the item wuery codes on a model Item-model like the User-model.php on config
     
     //this are namespaces
     use Psr\Http\Message\ResponseInterface as Response;
@@ -36,6 +38,8 @@
 
     require '../src/routes/items/get-all-items.php';
     require '../src/routes/items/get-item.php';
+    require '../src/routes/items/post-new-item.php';
+    require '..//controllers/post-new-item-control.php';
 
     //log in and register route, as well as the user class model
 

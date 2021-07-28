@@ -1,3 +1,12 @@
+/*
+
+    styles for the register-form-view-php on the templates folder
+    Had to do another style sheet cause some things are a bit different and they were giving me problems
+
+*/
+
+
+
 body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-family: 'Roboto Condensed', sans-serif; letter-spacing: 0px; font-size: 16px; color: #848687; font-weight: 400; line-height: 30px; background-color: #f3f5f7; }
 h1, h2, h3, h4, h5, h6 { color: #1c1e1e; margin: 0px 0px 15px 0px; font-weight: 400; font-family: 'Roboto Condensed', sans-serif; }
 h1 { font-size: 30px; line-height: 42px; }

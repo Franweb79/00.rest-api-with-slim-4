@@ -84,7 +84,7 @@
                     
                             
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <p><h2>REGISTER </h2></p>
+                                <p><h2>REGISTER USER</h2></p>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">

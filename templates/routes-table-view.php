@@ -34,7 +34,7 @@
 
                             <a href="<?php echo $url.'get-all-items' ?>" target="_blank"class="list-group-item list-group-item-action list-group-item-light"> GET ALL ITEMS</a>
                             <a href="<?php echo $url ?>" class="list-group-item list-group-item-action list-group-item-light">GET AN ITEM</a>
-                            <a href="<?php echo $url ?>" class="list-group-item list-group-item-action list-group-item-light">POST ITEM </a>
+                            <a href="<?php echo $url .'post-new-item'  ?>" target="_blank" class="list-group-item list-group-item-action list-group-item-light">POST ITEM </a>
                             <br/>
 
                             <p>Please specify one ID or name of the item you are looking for:</p>
