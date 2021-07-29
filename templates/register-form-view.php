@@ -109,6 +109,7 @@
                                    
                                     <div class="login-input">
                                             <label for="registerNameInputIDLabel" class="control-label sr-only">Email address*</label>
+                                         
                                             <input type="email" class="form-control" id="registerEMailInputID" name="email" aria-describedby="emailHelp" placeholder="Your email. Must contain a valid email address" required>
                                             <div class="login-icon"><i class="fa fa-envelope"></i></div>
 

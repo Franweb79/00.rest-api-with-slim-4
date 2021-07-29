@@ -16,9 +16,15 @@
 <ul>
 <li><b>params names</b> to be used (under construction):</li>
 <ul>
-<li></li>
+
 </ul>
 </ul>
+</li>
+<li>
+    <b>To be improved on new versions:</b>
+    <ul>
+        <li>config/Item-model.php: for now will only be used a method to insert new items, and will be called on the post-new-item-control.php but maybe in the future we could create methods to getItem and getItems, now this code is done on each route designed for each tasks. Maybe that way is more clean code</li>
+    </ul>
 </li>
 
  

@@ -14,7 +14,82 @@
         </head>
         <body>
 
-            <?php echo "soy el table" ?>
+            <?php 
+            
+                if(isset( $_SESSION['errors-for-alerts'])){
+
+
+              
+              
+            ?>
+
+                <div class="alert alert-danger" role="alert">
+
+                    <ul>
+            <?php
+
+                        /*
+
+                            as the v->errors() of the valitron library returns an array with another array for each error,
+                             we must iterate twice 
+
+                        */
+                                
+                                
+                            foreach($_SESSION['errors-for-alerts'] as $arrayValueWithEachSingleMessage){
+
+                                foreach ($arrayValueWithEachSingleMessage as $key => $value )
+                                {
+            ?>
+             
+                                     <li>
+                                         <?php echo $value; ?>
+                                     </li>
+
+            <?php  
+                                }
+
+                            }
+
+                            /*
+
+                                as a difference with the same code used on register-for-view.php to show validation errors, this time
+                                we can´t destroy session because it will delete the whole user session and this time we don´t want this.
+                                What we will do is UNSET the $_SESSION['errors-for-alerts'] to ensure it won´t be showed again
+                            */
+
+                            unset($_SESSION['errors-for-alerts']);
+                                
+            ?>
+                
+                </ul>
+
+                </div>
+
+
+            <?php 
+
+            
+                } 
+
+                if( isset($_SESSION['message-to-display-on-alert']) ){
+                
+            ?>
+
+                <div class="alert alert-success" role="alert">
+
+                    <?php echo $_SESSION['message-to-display-on-alert']; ?>
+
+                </div>
+                
+            <?php
+                    unset($_SESSION['message-to-display-on-alert']);
+
+                }
+
+
+            
+            ?>
 
             <div class="list-group">
             

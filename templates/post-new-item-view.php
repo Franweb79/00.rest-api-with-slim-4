@@ -35,8 +35,9 @@
 
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label class="control-label sr-only" for="item-name"></label>
                                     <div class="login-input">
+                                        <label class="control-label sr-only" for="item-name"></label>
+                                        <p>Please only numbers and letters allowed. No whitespaces. Min 3 max. 20 characters</p>
                                         <input type="text" name="itemName" placeholder="enter a name for your item" class="form-control"  required/>
                                         <div class="book-icon"><i class="fa fa-book"></i></div>
                                     </div>

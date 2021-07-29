@@ -41,12 +41,13 @@
     require '../src/routes/items/post-new-item.php';
     require '..//controllers/post-new-item-control.php';
 
-    //log in and register route, as well as the user class model
+    //log in and register route, as well as the user and item class models
 
     require '../src/routes/login.php';
     require '../controllers/login-control.php';
 
     require '../src/config/User-model.php';
+    require '../src/config/Item-model.php';
 
     require '../src/routes/register.php';
     require '..//controllers/register-control.php';
