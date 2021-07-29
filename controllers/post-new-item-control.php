@@ -49,6 +49,8 @@
         I THINK IT IS NOT POSSIBLE TO DO IN MIDDLEWARE CAUSE MIDDLEWARE WILL TRIGGER WHEN POST ( $app->post), 
 
         so we must set an $app->get route
+
+        //TODO think if we set only 5 items per user and then dont allow to create new items, and/or reset database every day
         
     */
 
