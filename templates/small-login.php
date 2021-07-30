@@ -36,9 +36,7 @@
             <input type="submit">
         </form>-->
 
-        
-        <button type="button" id="test-button">Click Me!</button> 
-
+           
             <div class="container">
                 <div class="row">
                     <div class="col-sm">
@@ -47,6 +45,7 @@
 
                     <div class="col-sm">
 
+                        <p></p>
                         <h2>LOG IN</h2>
                         <form method="POST" action="./login-control">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

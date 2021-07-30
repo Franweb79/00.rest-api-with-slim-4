@@ -1,5 +1,5 @@
 <?php
-     //var_dump($_SESSION);
+     
 ?>
 
 <!DOCTYPE HTML>  
@@ -11,6 +11,8 @@
 			  crossorigin="anonymous"></script>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+            <link href="css/styles.css" rel="stylesheet" >
+
         </head>
         <body>
 
@@ -105,20 +107,25 @@
                         <?php 
                     
                             $url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-                            echo  $url; ?>
+                             ?>
 
-                            <a href="<?php echo $url.'get-all-items' ?>" target="_blank"class="list-group-item list-group-item-action list-group-item-light"> GET ALL ITEMS</a>
-                            <a href="<?php echo $url ?>" class="list-group-item list-group-item-action list-group-item-light">GET AN ITEM</a>
+                            <a  href="<?php echo $url.'get-all-items' ?>" target="_blank"class="list-group-item list-group-item-action list-group-item-light"> GET ALL ITEMS</a>
+                            
                             <a href="<?php echo $url .'post-new-item'  ?>" target="_blank" class="list-group-item list-group-item-action list-group-item-light">POST ITEM </a>
                             <br/>
 
-                            <p>Please specify one ID or name of the item you are looking for:</p>
-                            <form target="_blank" method="GET" action="./get-item">
-                                
-                                <input type="text" name="get-item-field-name"/>
-                                <button type="submit">GET-ITEM</button>
+                            <div id="get-item-form">
 
-                            </form>
+                                <p>Please specify one ID or name of the item you are looking for:</p>
+                                <form target="_blank" method="GET" action="./get-item">
+                                    
+                                    <input type="text" name="get-item-field-name"/>
+                                    <button type="submit" class="btn btn-primary" style="margin-left:5px">GET-ITEM</button>
+
+                                </form>
+                            </div>
+                            
+                            
                             <?php require '../templates/close-session-form-view.php';  /*will be call from the index so index as if it was so this is the route*/?>
 
                     </div>

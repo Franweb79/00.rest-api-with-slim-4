@@ -80,3 +80,8 @@ textarea::-webkit-input-placeholder { color: #a6a7a8 !important; }
   background-color: transparent;
 
 }
+
+.set-border-bottom{
+  border-bottom:1px solid black !important;
+  padding-bottom: 3px !important;
+}

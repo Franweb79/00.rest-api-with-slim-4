@@ -9,6 +9,6 @@
 
     <input type="hidden" name="close-session-input-name" value="yes"/>
 
-    <input type="submit" class="btn btn-primary" value="Close session">
+    <input type="submit" class="btn btn-primary" style="margin-top:20px; background-color:#0069D9" value="Close session">
 
 </form>

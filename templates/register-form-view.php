@@ -93,7 +93,8 @@
                                         
 
                                             <label for="registerNameInputIDLabel" class="control-label sr-only">Name:</label>
-                                            <input type="text" class="form-control" id="registerNameInputID" name="name" aria-describedby="nameHelp" placeholder="Your name. Min 3 - max 10 characters. Only letters allowed. No whitespaces, symbols or numbers" required>
+                                            <p>Your name. Min 3 - max 10 characters. Only letters allowed. No whitespaces, symbols or numbers</p>
+                                            <input type="text" class="form-control" id="registerNameInputID" name="name" aria-describedby="nameHelp" required>
                                             <div class="login-icon"><i class="fa fa-user"></i></div>
                                         
                                     </div>   
@@ -109,8 +110,8 @@
                                    
                                     <div class="login-input">
                                             <label for="registerNameInputIDLabel" class="control-label sr-only">Email address*</label>
-                                         
-                                            <input type="email" class="form-control" id="registerEMailInputID" name="email" aria-describedby="emailHelp" placeholder="Your email. Must contain a valid email address" required>
+                                            <p>Your email. Must contain a valid email address</p>
+                                            <input type="email" class="form-control" id="registerEMailInputID" name="email" aria-describedby="emailHelp" required>
                                             <div class="login-icon"><i class="fa fa-envelope"></i></div>
 
                                             
@@ -130,7 +131,8 @@
                                     
                                     <div class="login-input">
                                             <label for="registerPasswordInputID1Label" class="control-label sr-only">Password*</label>
-                                            <input type="password" class="form-control" id="registerPasswordInputID1" name="password" aria-describedby="passwordHelp" placeholder="Password. min 6-max 10 characters." required>
+                                            <p>Password. min 6-max 10 characters.</p>
+                                            <input type="password" class="form-control" id="registerPasswordInputID1" name="password" aria-describedby="passwordHelp" required>
                                             <div class="login-icon"><i class="fa fa-lock" ></i></div>
                                             <div class="eye-icon"><button type="button" id="eye-icon-register-confirm"><i class="fa fa-eye" ></i></button></div>
                                         
@@ -149,7 +151,8 @@
                                     <div class="login-input">
 
                                         <label for="registerPasswordInputID2Label" class="control-label sr-only"> Confirm Password*</label>
-                                        <input type="password" class="form-control" id="registerPasswordInputID2" name="confirm_Password" aria-describedby="passwordHelp" placeholder="Repeat password" required>
+                                        <p>Repeat password</p>
+                                        <input type="password" class="form-control" id="registerPasswordInputID2" name="confirm_Password" aria-describedby="passwordHelp" required>
                                         <div class="login-icon"><i class="fa fa-lock" ></i></div>
 
 
