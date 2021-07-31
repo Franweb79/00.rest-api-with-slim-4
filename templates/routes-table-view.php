@@ -111,7 +111,7 @@
 
                             <a  href="<?php echo $url.'get-all-items' ?>" target="_blank"class="list-group-item list-group-item-action list-group-item-light"> GET ALL ITEMS</a>
                             
-                            <a href="<?php echo $url .'post-new-item'  ?>" target="_blank" class="list-group-item list-group-item-action list-group-item-light">POST ITEM </a>
+                            <a href="<?php echo $url .'post-new-item'  ?>" class="list-group-item list-group-item-action list-group-item-light">POST ITEM </a>
                             <br/>
 
                             <div id="get-item-form">
