@@ -115,4 +115,11 @@
         return $response;
 
     });
+
+    $app->get('/register-control', function( Request $request, Response $response){
+
+        return $response->withHeader('Location', './');
+
+
+    });
 ?>
