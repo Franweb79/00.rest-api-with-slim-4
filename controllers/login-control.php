@@ -196,6 +196,17 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
     
 });
 
+/*
+
+    to control if user reloads the page or try to access through URL without permission,
+    we control also the get route
+
+*/
+$app->get('/login-control', function (Request $request, Response $response, $args){
+
+  return $response->withHeader("Location", "./");
+
+});
 
 
 ?>

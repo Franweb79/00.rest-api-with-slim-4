@@ -52,6 +52,12 @@
         return $response; //with header al principal, y en el principal controlar que si llega algo de aqui, poner bandera de session cerrada
     } );
 
+    /*
+
+        to control if user reloads the page or try to access through URL without permission,
+        we control also the get route
+
+    */
 
 
     $app->get('/close-session-control', function (Request $request, Response $response, $args){
