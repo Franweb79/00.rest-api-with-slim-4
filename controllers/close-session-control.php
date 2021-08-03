@@ -52,4 +52,15 @@
         return $response; //with header al principal, y en el principal controlar que si llega algo de aqui, poner bandera de session cerrada
     } );
 
+
+
+    $app->get('/close-session-control', function (Request $request, Response $response, $args){
+
+       
+
+
+        return $response->withHeader('Location', './');
+    });
+
 ?>
+
