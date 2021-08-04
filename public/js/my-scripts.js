@@ -5,7 +5,7 @@ $( "#test-button" ).click(function( event ) {
     alert( event.currentTarget === this ); // true
   });
 
-$( "#eye-icon" ).click(( event )=> {
+$( "#eye-icon-login-id" ).click(( event )=> {
    // alert( event.currentTarget === this ); // true
 
     //alert("hi");

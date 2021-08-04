@@ -63,7 +63,7 @@
                                     <div class="login-input">
                                         <input id="loginPasswordInputID" name="loginPassName" type="password" class="form-control" placeholder="******"  required>
                                         <div class="login-icon"><i class="fa fa-lock" ></i></div>
-                                        <div class="eye-icon"><button type="button" id="eye-icon-id"><i class="fa fa-eye" ></i></button></div>
+                                        <div class="eye-icon"><button type="button" id="eye-icon-login-id"><i class="fa fa-eye" ></i></button></div>
                                     </div>
                                 </div>
                             </div>
