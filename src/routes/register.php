@@ -10,6 +10,9 @@
     use Slim\Factory\AppFactory;
     use Selective\BasePath\BasePathDetector;
 
+    use Psr\Http\Server\RequestHandlerInterface as RequestHandler; //for the middleware
+
+
     use Valitron\Validator as V;
 
     use Slim\Views\PhpRenderer;
@@ -17,13 +20,55 @@
      //TODO avoid user accesing register form when logged in, that maybe with a middleware
      //TODO think about if is neccesary making middlewares to be shown or not for the rest of routes or php files, and which requisites they should have each of them to access or not
 
+     /*
+
+        this middleware will control if user is loggedin or not. In case is logged in, can´t access
+        and return to ./
+    
+    */
+     $userRegisterControlMiddleware=function(Request $request, RequestHandler $handler){
+
+        $response = $handler->handle($request);
+
+        if(  isset($_SESSION['is_user_logged']) || isset($_COOKIE['s-token'])  ){
+
+        
+            return $response->withHeader('Location', './');
+
+
+        }else{
+            return $response;
+        }
+
+     };
+
     $app->get('/register', function ($request, $response, $args) {
 
-        session_start();
+        session_start();//needed for the middleware
         $renderer = new PhpRenderer('../templates');
 
         return $renderer->render($response, "register-form-view.php", $args);
-    });
+    })->add($userRegisterControlMiddleware);
+
+    /*
+        we create also the post to control it, 
+        we return to main cause we can only access 
+            -through the link on login page
+            -through the search bar
+
+        always when not logged of course, so we willadd the middleware here too
+
+    */
+
+    $app->post('/register', function ($request, $response, $args) {
+
+        session_start();//needed for thew middleware
+       
+
+        return $response->withHeader('Location', './');
+
+    })->add($userRegisterControlMiddleware);
+
 
 
 

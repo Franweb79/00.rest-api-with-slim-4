@@ -5,6 +5,18 @@
 
 
     /*
+        must be post, we create the get route just to handle the option
+        and make the user return to / in that case
+
+    */
+
+    $app->get('/post-user', function ($request, $response, array $args) {
+
+        return $response->withHeader('Location', './');
+    });
+
+
+    /*
     post one user
     */
     $app->post('/post-user', function ($request, $response, array $args) {
@@ -118,6 +130,8 @@
         }
          
     });
+
+    
 
 
 ?>

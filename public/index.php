@@ -30,8 +30,9 @@
 
     // # include users route, must do AFTER the declaration of app instance, dont know why. I GUESS BECAUSE THE $app invoked 
     //on those routes still not exists until $app is created
-    require '../src/routes/users/get-all-users.php';
-    require '../src/routes/users/get-user.php';
+    /*require '../src/routes/users/get-all-users.php';
+    require '../src/routes/users/get-user.php';*/
+
     require '../src/routes/users/post-user.php';
 
     //ITEMS ROUTES
@@ -43,7 +44,7 @@
 
     //log in and register route, as well as the user and item class models
 
-    require '../src/routes/login.php';
+    
     require '../controllers/login-control.php';
 
     require '../src/config/User-model.php';
@@ -379,47 +380,20 @@
        
     });
 
+    /*
+
+        just to avoid errors if by some reason a POST request is received (should not).
+
+        //TODO if in the future we find a POST request can be done to this main route, we 
+        we will handle it. For now, everything seems to be controlled on the get route 
+
+    */
+
     $app->post('/', function (Request $request, Response $response, $args) {
 
-        /*if a login form is set, we render the template again to show errors if they are.*/
-
-      
-        
-        
-       /* if( isset($_POST['login-form-incoming-name']) ){
-
-            
-
-            // $response->getBody()->write($_POST['login-form-incoming-name']);
-    
-            // require "../controllers/login-form-validations.php";
-    
-    
-         
-    
-             $renderer = new PhpRenderer('../templates');
-    
-             $renderer->render($response, "small-login.php", $args);
-    
-             //echo ($isAllOk);
-    
-            
-    
-    
-    
-            
-                 
-             
-            
-         
-    
-         }/
-        
-        
-         /*$response->getBody()->write($html);*/
+       
          
          return $response;
-        //return $response->withHeader('Location', './login');
         
      });
 

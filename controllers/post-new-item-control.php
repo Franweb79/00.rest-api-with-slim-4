@@ -9,6 +9,11 @@
     
     use Slim\Views\PhpRenderer;
 
+    /*
+        user must be logged or token cookie to remember session created
+
+    */
+
     $postItemControlMiddleware=function(Request $request, RequestHandler $handler){
 
         
