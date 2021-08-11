@@ -2,7 +2,6 @@
 
 <?php
 
-//TODO maybe we can refactor the item wuery codes on a model Item-model like the User-model.php on config
     
     //this are namespaces
     use Psr\Http\Message\ResponseInterface as Response;
@@ -223,13 +222,13 @@
 
         /*
         
-            TODO maybe when I finish i can refactor this following code for the alerts and not
-            having to render the template or destrying session on each condition, but problem is the flag color 
-            is different on many cases so we should make conditions anyway. at the moment i let it so
-
-            but i think template show and session destroy can be at the end, check what can be outside
-
+            TODO maybe when I can refactor this following code for the alerts and not
+            having to render the template or destroying session on each condition, but problem is the flag color 
+            is different on many cases so we should make conditions anyway. So, at the moment it will stay this way
            
+            Also maybe the template rendering and redirection to the small-login.php can be at the end 
+            instead of evaluating it on every condition, since it seems to be evaluated on all the conditions,
+            will check someday
 
         */
 
@@ -314,24 +313,7 @@
 
             }
 
-           
-
-           
-
             
-
-           /* 
-                //TODO maybe when I finish I can use this lines to refactor the code and avoid them on each condition
-                session_destroy();
-           
-            
-                
-
-                unset($_SESSION['message-to-display']);
-
-                   and render template
-                
-            */
 
         }
             
@@ -373,19 +355,13 @@
         
         return $response;
       
-        /*$response->getBody()->write($html);
-        
-        return $response;*/
-       //return $response->withHeader('Location', './login');
+        ;
        
     });
 
     /*
 
         just to avoid errors if by some reason a POST request is received (should not).
-
-        //TODO if in the future we find a POST request can be done to this main route, we 
-        we will handle it. For now, everything seems to be controlled on the get route 
 
     */
 

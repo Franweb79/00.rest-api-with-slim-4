@@ -5,7 +5,7 @@
 
     use Psr\Http\Server\RequestHandlerInterface as RequestHandler; //for the middleware
 
-    //TODO maybe on views set a BACK button and not open in a new window?
+   
     /*
 
         in this case, middleware must redirect also if no post form is coming from routes_table_view, 

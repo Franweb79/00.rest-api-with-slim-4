@@ -39,24 +39,12 @@
     
     };
 
-      /*
+    /*
     
         we won´t allow accessing it through get, so we redirect to index.php 
 
         which should lead to routes-table-view.php
-
-        //TODO maybe check all the same for the rest of routes, maybe can be done on widdleware adding a statement
-
-        if (isset ($_GET))
-
-        TO THE OTHER CONDITIONS
-
-        I THINK IT IS NOT POSSIBLE TO DO IN MIDDLEWARE CAUSE MIDDLEWARE WILL TRIGGER WHEN POST ( $app->post), 
-
-        so we must set an $app->get route
-
-        //TODO think if we set only 5 items per user and then dont allow to create new items, and/or reset database every day
-        
+            
     */
 
     $app->get('/post-new-item-control', function (Request $request, Response $response, $args){ 
@@ -89,8 +77,6 @@
                 we start validating the data with valitron before inserting it to the database.
                 Remember must have no whitespaces, only letters and number, min 3. max 10 characters.
                 We will also check with REQUIRED that a field exists in the data array, and is not null or an empty string.
-
-                //TODO MAYBE WE SHOULD ADD THIS REQUIRED VALIDATION TO THE REGISTER-CONTROL.PHP FIELDS?
 
                 https://github.com/vlucas/valitron
 

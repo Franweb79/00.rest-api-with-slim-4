@@ -9,13 +9,11 @@
     
         this route validates the form to register a new user.
         It comes from register.php file.
-        We use the valitron library to validfate fields:
+        We use the valitron library to validate fields:
 
         https://github.com/vlucas/valitron
     */ 
 
-    // TODO maybe create a get route and force to go to the log
-    //TODO also maybe for the post create a middleware to avoid accesing it when user is loggedin
    
 
     $app->post('/register-control', function( Request $request, Response $response){

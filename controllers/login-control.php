@@ -143,9 +143,11 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
           obtained on the userLogin query 
 
           that is because we have done the query to retrieve all user data before, and the token we have on the responseFronLogin is different,
-          it is the prior token
+          it is the prior token.
 
-          */
+          if $responseFromLogIn is not null, to the /, cause session or user is not valid
+
+        */
         $responseFromLogIn[0]['session_token']=$userObject->setToken($responseFromLogIn[0]["id_user"]);
        
         if( isset($_POST["login_checkbox_name"]) ){
@@ -181,12 +183,10 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
         
 
       }else {
-        //if $responseFromLogIn is not null, to the /, cause session or user is not valid
+        
 
-         // TODO MUST BE A RETURN REPSONSE HERE IF NO CORRECT USER (foe example, valid email but no correct pass)
 
          session_start();
-        //SEND A FLAG OR A SESSION VAR OR SOMETHING TO TELL USER OR PASS IS WRONG, not invalid formed but wrong
 
         $_SESSION['message-to-display-on-alert']="Email or password incorrect, please try again";
 

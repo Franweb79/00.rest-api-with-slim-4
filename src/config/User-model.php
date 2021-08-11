@@ -4,13 +4,12 @@
 
     /*
     
-        I will write correct comments of each method with @param and @return and so, like on java
+        I will write correct comments on many methods with @param and @return and so, like on java
 
         http://www.drjava.org/docs/user/ch10.html
 
     */
 
-    //TODO check IF CLOSED ALL CONNECTION ON METHODS
 
 
     class User{
@@ -90,6 +89,7 @@
 
         }
 
+        
         public function createToken(){
 
             //Generate a random string.
@@ -98,7 +98,6 @@
             //Convert the binary data into hexadecimal representation.
             $token = bin2hex($token);
 
-            //Print it out for example purposes.
             return $token;
 
         }
@@ -189,18 +188,16 @@
 
                 }else{
 
-                    //TODO maybe this must be done as an array to be able to use json_encode(), look how will it be 
-                    //used later, this message, on an alert or as json response
+                   
                    $response ='{"message" : "mmm I think that is not possible :/. Your session is wrong"}';
 
-                   // $response=null;
                 }
 
 
 
                  $conObj = null; // clear db object (close the connection)
 
-                 //var_dump("e token dentro de set token es". $token);
+                 
 
                  return $response;
 
@@ -225,7 +222,6 @@
         */
         public function insertUser($p_registerFormData){
 
-          //  array(4) { ["name"]=> string(7) "fffffff" ["email"]=> string(21) "prietofranc@gmail.com" ["password"]=> string(6) "123456" ["register-pass-input-2-name"]=> string(6) "123456" } 
 
            $sql="INSERT INTO users (user_name, user_email, user_password, session_token)
             VALUES (:p_user_name, :p_user_email, :p_user_password, NULL);";

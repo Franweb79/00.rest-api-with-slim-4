@@ -19,14 +19,6 @@
 
                 <?php
                            
-                     /*
-                        TODO maybe we can change styles to be able to show things like "min 6 max 10 outside the input, then is easier
-                        when we see on mobile or responsive because otherwise you can´t see the whole text
-                        
-                    */
-
-
-
 
                         if(isset ($_SESSION['errors-for-alerts']) ){
 
