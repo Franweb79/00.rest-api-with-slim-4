@@ -24,7 +24,7 @@
             
             
 
-           // var_dump($_SESSION);
+           // ($_SESSION);
            
           // die();
         
@@ -61,7 +61,7 @@
 
       
 
-        //var_dump($args);
+        //($args);
        
         //get-item
 
@@ -127,7 +127,7 @@
             
             
 
-           // var_dump("ee");
+           // ("ee");
 
            // die();
 

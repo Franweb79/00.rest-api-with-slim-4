@@ -17,7 +17,7 @@
             $sql="INSERT INTO items (item_name)
             VALUES (:p_item_name);";
 
-            var_dump($sql);
+            ($sql);
             
             try{
 

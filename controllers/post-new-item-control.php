@@ -25,7 +25,7 @@
             
             
 
-           // var_dump($_SESSION);
+           // ($_SESSION);
            
           // die();
         
@@ -71,7 +71,7 @@
 
             $data=$request->getParsedBody();
     
-            var_dump($data);
+            ($data);
 
             /*
                 we start validating the data with valitron before inserting it to the database.

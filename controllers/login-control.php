@@ -18,7 +18,13 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
     $pass="";
 
   
-    /*if a form is coming, we require the code to make the validations*/
+    /*
+    
+      if a form is coming, we require the code to make the validations, 
+      on another files we have done with valitron library, but this is older
+      and is good to know how to make with vanilla PHP also
+      
+    */
     if( isset($_POST['login-form-incoming-name']) ){
 
             
@@ -61,7 +67,8 @@ $app->post('/login-control', function (Request $request, Response $response, $ar
     
     /*
     
-        if we have an user with that cookie token, we start session like after regular userLogin method
+        if we have an user with that cookie token, 
+        we start session like after regular userLogin method
     
     */
       if(count($responseFromLogIn)>0){

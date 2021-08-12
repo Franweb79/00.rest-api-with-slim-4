@@ -23,7 +23,7 @@
             // https://www.php.net/manual/en/pdo.setattribute.php
             $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
-            //var_dump($conn);
+            //($conn);
 
             // return databaseconnection back
            return $conn;

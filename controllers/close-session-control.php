@@ -11,21 +11,20 @@
 
         $data=$request->getParsedBody();
 
-       // var_dump($data["close-session-input-name"]);
 
         if(  (isset($data["close-session-input-name"])) && ($data["close-session-input-name"]=="yes")     ){
 
             if(   isset($_COOKIE['s-token'])   ){
 
-               // var_dump("cookie set");
+              
 
-               var_dump($_COOKIE['s-token']);
+               ($_COOKIE['s-token']);
 
                
 
                 setcookie('s-token','', time() - 3600);
 
-                var_dump($_COOKIE['s-token']);
+                ($_COOKIE['s-token']);
 
                 
 
@@ -49,7 +48,7 @@
         $response->getBody()->write($jsondata);
 
 
-        return $response; //with header al principal, y en el principal controlar que si llega algo de aqui, poner bandera de session cerrada
+        return $response; 
     } );
 
     /*

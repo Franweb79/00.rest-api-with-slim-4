@@ -41,7 +41,7 @@
         if( ($statusValue=="Activo"||$statusValue=="Inactivo"||$statusValue=="activo"||$statusValue=="inactivo" ) && (filter_var($emailCheck, FILTER_VALIDATE_EMAIL)) && preg_match("/^[a-zA-Z-' ]*$/",$nameCheck)) {
 
 
-            //  var_dump($_POST["name"]);
+            //  ($_POST["name"]);
 
             /*gives somes problems is we store the $_POST values directly on the wuery, naybe because of sdyntax, so better so*/
             $nameValue=$_POST["name"];
@@ -49,7 +49,7 @@
             $emailValue=$_POST["email"];
             //$statusValue=$_POST["status"];
 
-           // var_dump($nameValue);
+           // ($nameValue);
         
             $format = 'Y-m-d H:i:s';
 

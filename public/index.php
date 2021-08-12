@@ -27,10 +27,21 @@
 
     $app = AppFactory::create();
 
-    // # include users route, must do AFTER the declaration of app instance, dont know why. I GUESS BECAUSE THE $app invoked 
-    //on those routes still not exists until $app is created
-    /*require '../src/routes/users/get-all-users.php';
-    require '../src/routes/users/get-user.php';*/
+
+    /* 
+    
+        #  routes, must be done AFTER the declaration of app instance, dont know why. I GUESS BECAUSE THE $app invoked 
+        on those routes still not exists until $app is created
+
+    */
+
+
+    /*
+    
+        require '../src/routes/users/get-all-users.php';
+        require '../src/routes/users/get-user.php';
+        
+    */
 
     require '../src/routes/users/post-user.php';
 
@@ -78,9 +89,11 @@
     // Add Slim routing middleware
     $app->addRoutingMiddleware();
 
-    /*deleted this from the official example
+    /*
     
-    $app->add(new BasePathMiddleware($app));
+        deleted this from the official example
+    
+        $app->add(new BasePathMiddleware($app));
     
     */
 
@@ -88,13 +101,19 @@
     $app->setBasePath("/00.rest-api-with-slim-4/public");
     $app->addErrorMiddleware(true, true, true);
 
+    /* 
+
+        some middlewares to test
+
+    */
+
     $firstMiddleware=function(Request $request, RequestHandler $handler){
 
         $response = $handler->handle($request);
 
         $existingContent = (string) $response->getBody();
 
-      //  $response = new Response();
+      
 
         $response->getBody()->write("first middleware ". $existingContent);
 
@@ -112,15 +131,21 @@
         return $response;
     };
   
-    /*$app->add($firstMiddleware);
-    $app->add($secondMiddleware);*/
+    /*
+    
+        $app->add($firstMiddleware);
+        $app->add($secondMiddleware);
+        
+    */
 
 
     // Define app routes
     $app->get('/', function (Request $request, Response $response, $args) {
-       // $response->getBody()->write("Hello, world!");
+       
 
-        /*we use session_start() to recover prior sessions if they are
+        /*
+        
+            we use session_start() to recover prior sessions if they are
 
         */
 
@@ -134,29 +159,32 @@
 
        
 
-        //var_dump ($_SESSION);
-
-        /*we check first of all if there are cookies and user is logged in, user is logged in, is needed because once we log,
-        we set that session var and then login form is not more needed since we have our session with our user.
-        otherwise also without cheking if user is logged in, form would be submitted without interruption each time we enter this route and cookies are seth.
-        this time is only done when needed (when we open browser)
+        /*
+        
+            we check first of all if there are cookies and user is logged in, user is logged in, is needed because once we log,
+            we set that session var and then login form is not more needed since we have our session with our user.
+            otherwise also without cheking if user is logged in, form would be submitted without interruption each time we enter this route and cookies are seth.
+            this time is only done when needed (when we open browser)
         */
 
-        /*so, if we have the cookie and user is still 
-        not logged in -that means, he has not entered password or he reopens browser when he was logged in*/
+        /*
+        
+            so, if we have the cookie and user is still 
+            not logged in -that means, he has not entered password 
+            or he reopens browser when he was logged in
+            
+        */
 
         if( (isset($_COOKIE["s-token"])) && (!isset($_SESSION["is_user_logged"]) )  ) {
 
 
-
-           // $data = array("loginEmailName" => $_COOKIE["user_email"], "loginPassName" => $_COOKIE["user_password"]);
-
-           /*we sent hidden inputs with mail and apss stored on the cookies to make login again. 
-           the inputs will have same name and so as in small-login.php form, to make it easier
+           /*
            
-           then with javascript we sent it programatically with submit() method
+                we sent hidden inputs with mail and apss stored on the cookies to make login again. 
+                the inputs will have same name and so as in small-login.php form, to make it easier,
+                then with javascript we sent it programatically with submit() method
+                but must be done only one time to set the session
 
-           but must be done only one time to set the sessi
            */
 ?>
             <form method="post"  action="./login-control" id="check_cookies_form_id">
@@ -176,7 +204,7 @@
         
         <script> 
 
-       // alert("hola");
+       
 
            document.getElementById("check_cookies_form_id").submit();
         
@@ -190,23 +218,8 @@
            
 
 
-        }/*else if( !isset($_COOKIE["s-token"])  && isset($_SESSION["is_user_logged"]) ){
-
-            /*this is to prevent page being reloaded and if cookie is deleted whern user is logged in, if he does, then out to lgin,
-             we make it on an else if to avoid
-            
-            it is executed when user is logged in but hasnt click "remember me", nbecause it would otherwise destroy the session 
-            */
-          //  session_destroy();
-
-           // var_dump("cookie deleted and reloaded page");
-
-            //die();
-
-           // header('Location:./');
-       // }
-
-      
+        }
+        
         
         if( empty($_SESSION)){
 
@@ -338,7 +351,12 @@
                 </div>
         <?php   
         
-        /* must destroy the session variable to show a message on an alert, to avoid alert being shown again*/
+        /* 
+        
+            must destroy the session variable to show a message on an alert, 
+            to avoid alert being shown again
+            
+        */
                 unset($_SESSION['message-to-display-on-alert']);
 
 
@@ -373,25 +391,6 @@
         
      });
 
-    
-
-    
-
-
-
-
-
-   /* $app->get('/users', function ($request, $response, array $args) {
-
-        $response->getBody()->write("path to get users");
-        return $response;
-        
-    });*/
-
- 
-
-
-   
     
 
     // Run app
