@@ -90,7 +90,7 @@
 
             /* 
             
-                return $response must return a response object; if we wanrt to return as a json object to make it
+                return $response must return a response object; if we want to return as a json object to make it
                 more easy to use by clients, then pass the json created with json_encode to the body of the response
                 through getBody()->write(), and then set proper header with the "response->withHeader() method, as said before
             
