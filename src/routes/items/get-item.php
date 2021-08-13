@@ -8,7 +8,8 @@
    
     /*
 
-        in this case, middleware must redirect also if no post form is coming from routes_table_view, 
+        in this case, middleware must redirect also if no post form is coming 
+        from routes_table_view, 
         not only if no user is logged
 
     */
@@ -22,11 +23,6 @@
         if(  ( !isset($_SESSION['is_user_logged']) && !isset($_COOKIE['s-token']) )  || (  !isset($_GET['get-item-field-name']) )  ){
 
             
-            
-
-           // ($_SESSION);
-           
-          // die();
         
             return $response->withHeader('Location', './');
         
@@ -52,7 +48,8 @@
 
         /*
 
-             we need to make the middleware work correctly, in order to recover the session and check 
+             we need session_start to make the middleware work correctly, 
+             in order to recover the session and check 
              what must be checked on the middleware with $_SESSION and so
 
         */
@@ -60,10 +57,6 @@
         session_start();
 
       
-
-        //($args);
-       
-        //get-item
 
         $sql="SELECT * from items where (id_item=:get_item_form_field) OR (item_name=:get_item_form_field) ";
 
@@ -89,7 +82,7 @@
              
              if(count($items)>0 ){
 
-               //wil caall it "$res" to avoid problems with the PSR-7 "$response" slim returns
+               //wil call it "$res" to avoid problems with the PSR-7 "$response" slim returns
                 $res= $items;
 
             }else{
@@ -126,11 +119,6 @@
 
             
             
-
-           // ("ee");
-
-           // die();
-
         }catch(PDOException $ex){
 
             $responseJSONencoded=json_encode( array ("exception"=> $ex->getMessage()) );
@@ -143,15 +131,7 @@
 
     })->add($getItemControlMiddleware);
 
-    /*$app->get('/get-item', function( Request $request, Response $response){
-
-        
-
-        return $response->withHeader('Location', './');
-
-
-
-    })*/
+   
 
    
 ?>

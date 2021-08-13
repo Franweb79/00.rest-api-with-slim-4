@@ -43,7 +43,7 @@
         
     */
 
-    require '../src/routes/users/post-user.php';
+   // require '../src/routes/users/post-user.php';
 
     //ITEMS ROUTES
 

@@ -19,12 +19,6 @@
         
         if( !isset($_SESSION['is_user_logged']) && !isset($_COOKIE['s-token']) ){
 
-            
-            
-
-           // ($_SESSION);
-           
-          // die();
         
             return $response->withHeader('Location', './');
         
@@ -47,10 +41,7 @@
 
         return $renderer->render($response, "post-new-item-view.php", $args); 
 
-        //return $response;
-
-        /*$_SESSION['message-to-display-on-alert']="This operation is not allowed ";
-        return $response->withHeader('Location', './');*/
+       
 
 
     })->add($postItemControlMiddleware);

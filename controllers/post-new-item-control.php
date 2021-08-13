@@ -23,11 +23,6 @@
         if(  !isset($_SESSION['is_user_logged']) && !isset($_COOKIE['s-token'])  ){
 
             
-            
-
-           // ($_SESSION);
-           
-          // die();
         
             return $response->withHeader('Location', './');
         
