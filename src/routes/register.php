@@ -51,7 +51,8 @@
 
     /*
         we create also the post to control it, 
-        we return to main cause we can only access 
+        we return to main cause we can only access
+         
             -through the link on login page
             -through the search bar
 
