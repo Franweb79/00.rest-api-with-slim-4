@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-08-2021 a las 21:01:42
+-- Tiempo de generación: 16-08-2021 a las 13:56:23
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 8.0.8
 
@@ -37,20 +37,9 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`id_item`, `item_name`) VALUES
-(1, 'ITEM 1'),
-(2, 'ITEM 2'),
-(10, 'ITEM 3'),
-(11, 'bbbbb'),
-(12, 'cccccc'),
-(13, 'rrrrrrr'),
-(14, 'rrrrrrrrr'),
-(15, 'eeeeee'),
-(16, 'eeeeee'),
-(17, 'ddd dd'),
-(18, 'bolala'),
-(19, 'zzzzzz'),
-(20, 'blablacar'),
-(21, 'qqqqqq');
+(1, 'item1'),
+(2, 'item2'),
+(3, 'item3');
 
 -- --------------------------------------------------------
 
@@ -100,13 +89,26 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `items`
 --
 ALTER TABLE `items`
-  MODIFY `id_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+DELIMITER $$
+--
+-- Eventos
+--
+CREATE DEFINER=`root`@`localhost` EVENT `reset-items` ON SCHEDULE EVERY 1 DAY STARTS '2021-08-16 13:17:13' ON COMPLETION PRESERVE ENABLE DO TRUNCATE TABLE items$$
+
+CREATE DEFINER=`root`@`localhost` EVENT `create-items` ON SCHEDULE EVERY 1 DAY STARTS '2021-08-16 13:18:04' ON COMPLETION PRESERVE ENABLE DO INSERT INTO items (item_name)
+ VALUES ("item1"),
+("item2"),
+("item3")$$
+
+DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
