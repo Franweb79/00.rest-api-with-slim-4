@@ -103,8 +103,26 @@
     */
 
     /*and added this*/
-    $app->setBasePath("/00.rest-api-with-slim-4/public");
-    $app->addErrorMiddleware(true, true, true);
+
+     /*
+        for development: 
+    */
+
+    
+        $app->setBasePath("/00.rest-api-with-slim-4");
+        $app->addErrorMiddleware(true, true, true);
+    
+    
+
+    /*
+        for production, setBasePath must be removed 
+        and the error middleware set to false on first argument
+    */
+
+    //$app->setBasePath("/rest-api-with-slim-4");
+    //$app->addErrorMiddleware(false, true, true);
+
+
 
     /* 
 
