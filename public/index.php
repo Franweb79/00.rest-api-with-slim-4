@@ -23,6 +23,11 @@
      // include DB connection file (at the moment dev one, later production one when finished, on my own host)
     require '../src/config/db-connection-dev.php';
 
+    // production version
+
+    require '../src/config/db-connection-prod.php';
+
+
     //create SLIM instance, on slim 4 is so:
 
     $app = AppFactory::create();
