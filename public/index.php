@@ -25,7 +25,7 @@
 
     // production version
 
-    require '../src/config/db-connection-prod.php';
+   // require '../src/config/db-connection-prod.php';
 
 
     //create SLIM instance, on slim 4 is so:
