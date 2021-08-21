@@ -1,5 +1,5 @@
 docs/
 vendor/
 non-obfuscated-assets/
-config/db-connection-prod.php
+src/config/db-connection-prod.php
 
